@@ -10,6 +10,6 @@
 -   `npm run start` сборка и запуск проекта
 -   `npm run dev` запуск проекта для разработки
 
-В проекте настроен автодеплой из ветки `deploy`
+В проекте настроен автодеплой из ветки `deploy` на netlify.
 
-<!-- ### Актуальная версия проекта доступна по [ссылке](https://deploy--earnest-pithivier-bdfcc1.netlify.app/) -->
+### Актуальная версия проекта доступна по [ссылке](https://deploy--chipper-dolphin-52e502.netlify.app/)
