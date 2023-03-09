@@ -1,0 +1,34 @@
+<html lang="en">
+
+    {{> layout/head title="Вход" name-css="login" }}
+
+    <body>
+        <div class="login-page">
+
+            <div class="login-wrapper">
+                <div class="login-header">Вход</div>
+                <form class="login-form">
+                    <div>
+
+                        <label class="text-field">
+                            <input class="text-input login" type="text" placeholder=" " required />
+                            <span class="text-span">Логин</span>
+                        </label>
+                        <label class="text-field">
+                            <input class="text-input password" type="password" placeholder=" " required />
+                            <span class="text-span">Пароль</span>
+                        </label>
+                    </div>
+                    <button class="login-form__submit">Авторизоваться</button>
+
+                </form>
+
+                <div class="signup-block">
+                    <a href="../Signin/signin.hbs">Нет аккаунта?</a>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>
