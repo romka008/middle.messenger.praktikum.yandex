@@ -1,0 +1,51 @@
+<html lang="en">
+
+    {{> layout/head title="Регистрация" name-css="signin" }}
+
+    <body>
+        <div class="signin-page">
+
+            <div class="signin-wrapper">
+                <div class="signin-header">Регистрация</div>
+                <form class="signin-form">
+                    <label class="text-field">
+                        <input class="text-input email" type="text" placeholder=" " required />
+                        <span class="text-span">Почта</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input login" type="text" placeholder=" " required />
+                        <span class="text-span">Логин</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input first_name" type="text" placeholder=" " required />
+                        <span class="text-span">Имя</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input second_name" type="text" placeholder=" " required />
+                        <span class="text-span">Фамилия</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input phone" type="tel" placeholder=" " required />
+                        <span class="text-span">Телефон</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input password" type="password" placeholder=" " required />
+                        <span class="text-span">Пароль</span>
+                    </label>
+                    <label class="text-field">
+                        <input class="text-input password" type="password" placeholder=" " required />
+                        <span class="text-span">Пароль (ещё раз)</span>
+                    </label>
+                    <button class="signin-form__submit">Регистрация</button>
+                </form>
+
+                <div class="signup-block">
+
+                    <a href="../LogIn/login.hbs">Войти</a>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>

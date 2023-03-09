@@ -1,0 +1,154 @@
+@import "../styles.css";
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.profile-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-wrapper {
+    width: 100%;
+    max-width: 510px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 130px;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+}
+
+.profile-avatar > img {
+    position: absolute;
+}
+
+.profile-avatar-hover {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    visibility: hidden;
+    background-color: #000000;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.profile-avatar:hover > .profile-avatar-hover {
+    visibility: visible;
+}
+
+.profile-avatar-hover > span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #1e1e1e;
+    padding-top: 21px;
+    padding-bottom: 50px;
+}
+
+.profile-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-field_name {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: #1e1e1e;
+}
+
+.profile-field_value {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: #999999;
+}
+
+.profile-wrapper .profile-field:nth-last-child(4) {
+    border-bottom: none;
+    padding-bottom: 50px;
+}
+
+.profile-wrapper .profile-field:nth-last-child(1) {
+    border-bottom: none;
+}
+
+.edit-data,
+.edit-password {
+    color: #3369f3;
+    cursor: pointer;
+}
+
+.logout {
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.profile-back-page {
+    position: fixed;
+    height: 100vh;
+    width: 64px;
+    left: 0;
+    border-right: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fbfbfb;
+}
+
+.arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #3369f3;
+    position: relative;
+    cursor: pointer;
+}
+
+.arrow > svg {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+@media (max-width: 820px) {
+    .profile-page {
+        padding-left: 74px;
+        padding-right: 10px;
+    }
+}
