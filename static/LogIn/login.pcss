@@ -33,7 +33,7 @@ body {
     font-size: 20px;
     line-height: 20px;
     text-align: center;
-    color: #1e1e1e;
+    color: var(--text-color);
     padding-top: 50px;
 }
 
@@ -47,9 +47,9 @@ body {
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #1e1e1e;
+    color: var(--text-color);
     border: none;
-    border-bottom: 1px solid #3369f3;
+    border-bottom: var(--border);
     background-color: transparent;
     outline: none;
 }
@@ -67,7 +67,7 @@ body {
     line-height: 13px;
     pointer-events: none;
     position: absolute;
-    color: #999999;
+    color: var(--text-gray-color);
     inset: 0;
     transition: top 0.2s ease, font-size 0.2s ease;
 }
@@ -96,7 +96,7 @@ body {
 .text-input:not(:placeholder-shown) + .text-span {
     opacity: 1;
     transform: scale(0.75) translateY(-100%) translateX(-5px);
-    color: #999999;
+    color: var(--text-gray-color);
 } */
 
 .login-form__submit {
@@ -104,11 +104,11 @@ body {
     margin-top: 135px;
     border: none;
     border-radius: 8px;
-    background-color: #3369f3;
+    background-color: var(--background-button);
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #ffffff;
+    color: var(--button-color);
     cursor: pointer;
     padding: 12px;
 }
