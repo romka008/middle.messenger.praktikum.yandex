@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 @font-face {
     font-family: "Inter";
     src: url("assets/fonts/Inter-Light.ttf") format("truetype");
@@ -34,11 +36,11 @@ html {
 }
 
 a {
-    color: #3369f3;
+    color: var(--blue-color);
     text-decoration: none;
 }
 
-main {
+.menu > ul {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -46,4 +48,8 @@ main {
     align-items: center;
     gap: 10px;
     font-size: 30px;
+}
+
+.menu > ul > li {
+    list-style-type: none;
 }

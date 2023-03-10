@@ -1,53 +1,54 @@
 <html lang="en">
 
-    {{> layout/head title="Изменить данные" name-css="editProfile" }}
+    {{> head title="Изменить данные" name-css="editProfile" }}
 
     <body>
         <div class="profile-page">
+            <main>
+                <div class="profile-wrapper">
+                    <div class="profile-avatar">
+                        <img src="../../assets/image/Union.png" alt="avatar" />
+                        <div class="profile-avatar-hover">
+                            <span>Поменять аватар</span>
+                        </div>
+                    </div>
+                    <div class="profile-fields">
+                        <div class="profile-field">
+                            <div class="profile-field_name">Почта</div>
+                            <input class="profile-field_value" name="email" value="pochta@yandex.ru" />
+                        </div>
+                        <div class="profile-field">
+                            <div class="profile-field_name">Логин</div>
+                            <input class="profile-field_value" name="login" value="romka008" />
+                        </div>
+                        <div class="profile-field">
+                            <div class="profile-field_name">Имя</div>
+                            <input class="profile-field_value" name="first_name" value="Роман" />
+                        </div>
+                        <div class="profile-field">
+                            <div class="profile-field_name">Фамилия</div>
+                            <input class="profile-field_value" name="second_name" value="Андреевич" />
+                        </div>
+                        <div class="profile-field">
+                            <div class="profile-field_name">Имя в чате</div>
+                            <input class="profile-field_value" name="display_name" value="romka008" />
+                        </div>
+                        <div class="profile-field">
+                            <div class="profile-field_name">Телефон</div>
+                            <input class="profile-field_value" name="phone" value="+7 (999)-999-99-99" />
+                        </div>
+                    </div>
 
-            <div class="profile-wrapper">
-                <div class="profile-avatar">
-                    <img src="../../assets/image/Union.png" alt="avatar" />
-                    <div class="profile-avatar-hover">
-                        <span>Поменять аватар</span>
+                    <div class="profile-save">Сохранить</div>
+                </div>
+                <div class="profile-back-page">
+                    <div class="arrow">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 11L2 6L6 1" stroke="white" stroke-width="1.6"></path>
+                        </svg>
                     </div>
                 </div>
-                <div class="profile-fields">
-                    <div class="profile-field">
-                        <div class="profile-field_name">Почта</div>
-                        <input class="profile-field_value email" value="pochta@yandex.ru" />
-                    </div>
-                    <div class="profile-field">
-                        <div class="profile-field_name">Логин</div>
-                        <input class="profile-field_value login" value="romka008" />
-                    </div>
-                    <div class="profile-field">
-                        <div class="profile-field_name">Имя</div>
-                        <input class="profile-field_value first_name" value="Роман" />
-                    </div>
-                    <div class="profile-field">
-                        <div class="profile-field_name">Фамилия</div>
-                        <input class="profile-field_value second_name" value="Андреевич" />
-                    </div>
-                    <div class="profile-field">
-                        <div class="profile-field_name">Имя в чате</div>
-                        <input class="profile-field_value display_name" value="romka008" />
-                    </div>
-                    <div class="profile-field">
-                        <div class="profile-field_name">Телефон</div>
-                        <input class="profile-field_value phone" value="+7 (999)-999-99-99" />
-                    </div>
-                </div>
-
-                <div class="profile-save">Сохранить</div>
-            </div>
-            <div class="profile-back-page">
-                <div class="arrow">
-                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 11L2 6L6 1" stroke="white" stroke-width="1.6"></path>
-                    </svg>
-                </div>
-            </div>
+            </main>
         </div>
     </body>
 
