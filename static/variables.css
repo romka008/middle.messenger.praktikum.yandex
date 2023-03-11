@@ -1,0 +1,11 @@
+html {
+    --text-color: #1e1e1e;
+    --text-gray-color: #999999;
+    --blue-color: #3369f3;
+    --background-button: var(--blue-color);
+    --red: #ff0000;
+    --button-color: #ffffff;
+    --text-validate-color: #ff2f2f;
+
+    --border: 1px solid var(--blue-color);
+}

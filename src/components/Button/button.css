@@ -1,0 +1,13 @@
+/* @import "../../styles.css"; */
+
+.profile-save_newpassword {
+    padding: 12px 115px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    background-color: var(--background-button);
+    border: var(--border);
+    border-radius: 8px;
+    color: var(--button-color);
+    cursor: pointer;
+}

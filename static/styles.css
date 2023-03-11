@@ -1,0 +1,55 @@
+@import "./variables.css";
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/Inter-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+html {
+    font-family: "Inter", "Helvetica", sans-serif;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--blue-color);
+    text-decoration: none;
+}
+
+.menu > ul {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+}
+
+.menu > ul > li {
+    list-style-type: none;
+}
