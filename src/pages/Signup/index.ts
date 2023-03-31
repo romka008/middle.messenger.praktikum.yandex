@@ -1,5 +1,5 @@
 import Block from "../../modules/Block";
-import template from "./signUp.hbs";
+import template from "./signup.hbs";
 import {Button} from "../../components/Button3";
 import {Input} from "../../components/Input";
 import {validate} from "../../utils/validate";
