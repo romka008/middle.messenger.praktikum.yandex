@@ -1,0 +1,33 @@
+.field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
+    white-space: nowrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.field_name {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--text-color);
+}
+
+.field_value {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-text-error {
+    text-align: right;
+    font-size: 8px;
+    position: relative;
+    color: var(--text-validate-color);
+}
+
+.text-error {
+    padding-top: 0;
+    top: 0;
+}

@@ -1,0 +1,13 @@
+.link-block {
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding-top: 14px;
+}
+
+.link-block > a {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+}
