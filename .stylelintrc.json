@@ -1,7 +1,11 @@
 {
     "extends": "stylelint-config-standard",
     "rules": {
-        "color-hex-case": "lower"
+        "import-notation": "string",
+        "color-hex-case": "lower",
+        "custom-property-empty-line-before": null,
+        "no-empty-source": null,
+        "selector-class-pattern": null
     },
     "ignoreFiles": [
         "dist/*"
