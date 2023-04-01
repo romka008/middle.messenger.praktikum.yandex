@@ -1,0 +1,73 @@
+.message-wrapper {
+    width: fit-content;
+    max-width: 40%;
+    padding: 11px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--text-color);
+}
+
+.partner-message {
+    background-color: #f8f8f8;
+    border-radius: 0 15px 15px;
+    position: relative;
+}
+
+.your-message {
+    display: flex;
+    gap: 4px;
+    align-self: flex-end;
+    background-color: #f8f8f8;
+    border-radius: 15px 15px 0;
+    position: relative;
+}
+
+.time-message {
+    position: absolute;
+    bottom: 11px;
+    right: 11px;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: var(--text-gray-color);
+}
+
+.time-your-message {
+    align-self: flex-end;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: #3369f3;
+}
+
+.status-message {
+    align-self: flex-end;
+    padding: 0 5px 2px 0;
+}
+
+.image-wrapper {
+    width: 100%;
+    max-width: 316px;
+    max-height: 211px;
+    position: relative;
+}
+
+.message-image {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.time-message-image {
+    position: absolute;
+    background-color: rgba(82, 82, 82, 0.5);
+    bottom: 11px;
+    right: 11px;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    border-radius: 30px;
+    color: #ffffff;
+    padding: 2px 7px;
+}

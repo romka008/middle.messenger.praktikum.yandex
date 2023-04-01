@@ -1,14 +1,5 @@
 @import "../../../static/styles.css";
 
-html {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    height: 100%;
-}
-
 .login-page {
     height: 100%;
     display: flex;
@@ -87,4 +78,18 @@ body {
 
 .center {
     justify-content: center;
+}
+
+.link-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 14px;
+}
+
+.link-block > a {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
 }

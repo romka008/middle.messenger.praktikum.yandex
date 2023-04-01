@@ -1,0 +1,26 @@
+<div class="chat-block">
+    {{! может быть active}}
+    <div class="chat">
+        <div class="chat-left">
+            <div class="chat-left-avatar"></div>
+            <div class="chat-left-preview">
+                <div class="chat-left-preview__name-chat">
+                    {{{nameChat}}}
+                </div>
+                <div class="chat-left-preview__text-chat">
+                    {{{previewMessage}}}
+                </div>
+            </div>
+        </div>
+        <div class="chat-right">
+            <div class="chat-right-preview">
+                <div class="chat-right-preview__time-message">
+                    {{{messageTime}}}
+                </div>
+                <div class="chat-left-preview__non-read-messages">
+                    {{{countNonReadMessage}}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
