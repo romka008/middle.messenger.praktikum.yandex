@@ -14,4 +14,5 @@
 
 ### Актуальная версия проекта доступна по [ссылке](https://deploy--chipper-dolphin-52e502.netlify.app/)
 
+
 ### [Ссылка](https://github.com/romka008/middle.messenger.praktikum.yandex/pull/7) на пулл-реквест первого спринта.
