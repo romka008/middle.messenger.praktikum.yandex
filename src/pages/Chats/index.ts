@@ -11,7 +11,7 @@ import {Form} from "../../components/Form";
 import {Messages} from "../../components/Messages";
 import {Message} from "../../components/Messages/Message";
 import statusMessageIcon from "../../assets/icons/read.svg";
-import cameraImage from "../../assets/image/camera.png";
+import cameraImage from "../../assets/image/cameraImg.png";
 
 export class Chats extends Block {
     constructor() {
