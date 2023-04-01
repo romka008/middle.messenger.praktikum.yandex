@@ -4,9 +4,9 @@ import "./button.module.css";
 
 interface ButtonProps {
     type?: string;
-    label: string;
     className?: string;
-    pattern?: string;
+    label?: string;
+    svg?: string;
     events: {
         click: (e: PointerEvent) => void;
     };

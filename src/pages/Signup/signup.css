@@ -67,6 +67,16 @@
     line-height: 11px;
 }
 
-.center {
+.link-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    padding-top: 14px;
+}
+
+.link-block > a {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
 }

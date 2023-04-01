@@ -7,5 +7,9 @@ html {
     --button-color: #ffffff;
     --text-validate-color: #ff2f2f;
 
+    --background-color-chats: #fbfbfb;
+    --background-color: #efefef;
+
+    --border-color: #eaeaea;
     --border: 1px solid var(--blue-color);
 }

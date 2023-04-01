@@ -11,6 +11,7 @@ interface IInputProps {
         blur?: (e: Event) => void;
         focus?: (e: Event) => void;
     };
+    placeholder?: string;
 }
 
 export class Input extends Block<IInputProps> {

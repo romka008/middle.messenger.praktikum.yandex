@@ -33,15 +33,6 @@ body {
     padding-bottom: 50px;
 }
 
-/* .profile-field {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #eaeaea;
-    padding-top: 10px;
-    padding-bottom: 10px;
-} */
-
 .profile-field_name {
     font-weight: 500;
     font-size: 13px;
@@ -60,12 +51,19 @@ body {
 
 .edit-data,
 .edit-password {
+    width: 100%;
+    padding-top: 14px;
     color: var(--blue-color);
     font-size: 13px;
     font-weight: 500;
     line-height: 13px;
     border-bottom: 1px solid #eaeaea;
     padding-bottom: 10px;
+}
+
+.logout {
+    width: 100%;
+    padding-top: 10px;
 }
 
 .logout > a {
