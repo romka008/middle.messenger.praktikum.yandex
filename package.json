@@ -2,6 +2,9 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "start": "npm run build && node server.js",
     "dev": "parcel static/index.html --open --no-cache",

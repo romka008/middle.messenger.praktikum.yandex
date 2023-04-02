@@ -6,7 +6,7 @@ import {Field} from "../../../components/ProfileField/Field";
 import {ProfileField} from "../../../components/ProfileField";
 import {BackInChats} from "../../../components/BackIiChats";
 import {Button} from "../../../components/Button3";
-import {validate} from "../../../utils/validate";
+import {blur, focus, validate} from "../../../utils/validate";
 import {setError} from "../../../utils/setError";
 
 import "./editProfile.css";
@@ -47,10 +47,10 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldEmail as Block, e);
+                        blur(this.children.fieldEmail as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldEmail as Block, e);
+                        focus(this.children.fieldEmail as Block, e);
                     }
                 }
             })
@@ -65,10 +65,10 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldLogin as Block, e);
+                        blur(this.children.fieldLogin as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldLogin as Block, e);
+                        focus(this.children.fieldLogin as Block, e);
                     }
                 }
             })
@@ -83,10 +83,10 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldFirstName as Block, e);
+                        blur(this.children.fieldFirstName as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldFirstName as Block, e);
+                        focus(this.children.fieldFirstName as Block, e);
                     }
                 }
             })
@@ -101,10 +101,10 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldSecondName as Block, e);
+                        blur(this.children.fieldSecondName as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldSecondName as Block, e);
+                        focus(this.children.fieldSecondName as Block, e);
                     }
                 }
             })
@@ -119,10 +119,10 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldDisplayName as Block, e);
+                        blur(this.children.fieldDisplayName as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldDisplayName as Block, e);
+                        focus(this.children.fieldDisplayName as Block, e);
                     }
                 }
             })
@@ -137,30 +137,16 @@ export class EditProfile extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldPhone as Block, e);
+                        blur(this.children.fieldPhone as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldPhone as Block, e);
+                        focus(this.children.fieldPhone as Block, e);
                     }
                 }
             })
         });
 
         this.children.backInChats = new BackInChats({});
-    }
-
-    blur(elem: Block, event: Event) {
-        const target = event.target as HTMLInputElement;
-        const [, objErrors] = validate({[target.name]: target.value});
-
-        setError(elem.element, objErrors[target.name]);
-    }
-
-    focus(elem: Block, event: Event) {
-        const target = event.target as HTMLInputElement;
-        const [, objErrors] = validate({[target.name]: target.value});
-
-        setError(elem.element, objErrors[target.name]);
     }
 
     private handleSubmit = (evt: PointerEvent): void => {

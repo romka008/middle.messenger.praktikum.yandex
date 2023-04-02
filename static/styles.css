@@ -35,6 +35,14 @@ html {
     box-sizing: border-box;
 }
 
+#root {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+}
+
 a {
     color: var(--blue-color);
     text-decoration: none;

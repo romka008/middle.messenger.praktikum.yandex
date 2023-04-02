@@ -8,7 +8,7 @@ import {Field} from "../../../components/ProfileField/Field";
 import {ProfileField} from "../../../components/ProfileField";
 import {BackInChats} from "../../../components/BackIiChats";
 import "./editPassword.css";
-import {validate} from "../../../utils/validate";
+import {blur, focus, validate} from "../../../utils/validate";
 import {setError} from "../../../utils/setError";
 import {Button} from "../../../components/Button3";
 
@@ -35,10 +35,10 @@ export class EditPassword extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldOldPassword as Block, e);
+                        blur(this.children.fieldOldPassword as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldOldPassword as Block, e);
+                        focus(this.children.fieldOldPassword as Block, e);
                     }
                 }
             })
@@ -53,10 +53,10 @@ export class EditPassword extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldNewPassword as Block, e);
+                        blur(this.children.fieldNewPassword as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldNewPassword as Block, e);
+                        focus(this.children.fieldNewPassword as Block, e);
                     }
                 }
             })
@@ -70,10 +70,10 @@ export class EditPassword extends Block {
                 className: "profile-field_value",
                 events: {
                     blur: e => {
-                        this.blur(this.children.fieldAginNewPassword as Block, e);
+                        blur(this.children.fieldAginNewPassword as Block, e);
                     },
                     focus: e => {
-                        this.focus(this.children.fieldAginNewPassword as Block, e);
+                        focus(this.children.fieldAginNewPassword as Block, e);
                     }
                 }
             })
@@ -93,20 +93,6 @@ export class EditPassword extends Block {
         });
 
         this.children.backInChats = new BackInChats({});
-    }
-
-    blur(elem: Block, event: Event) {
-        const target = event.target as HTMLInputElement;
-        const [, objErrors] = validate({[target.name]: target.value});
-
-        setError(elem.element, objErrors[target.name]);
-    }
-
-    focus(elem: Block, event: Event) {
-        const target = event.target as HTMLInputElement;
-        const [, objErrors] = validate({[target.name]: target.value});
-
-        setError(elem.element, objErrors[target.name]);
     }
 
     private handleSubmit = (evt: PointerEvent): void => {
