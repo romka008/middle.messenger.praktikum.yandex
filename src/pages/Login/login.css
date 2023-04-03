@@ -1,0 +1,65 @@
+@import "../../../static/styles.css";
+
+.login-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e5e5;
+}
+
+.login-wrapper {
+    box-sizing: border-box;
+    width: 340px;
+    background: #fff;
+    box-shadow: 0 0 6px #dbdbdb;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.login-header {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--text-color);
+    padding-top: 50px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form__submit {
+    width: 100%;
+    margin-top: 135px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--background-button);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--button-color);
+    cursor: pointer;
+    padding: 12px;
+}
+
+.center {
+    justify-content: center;
+}
+
+.link-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 14px;
+}
+
+.link-block > a {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+}

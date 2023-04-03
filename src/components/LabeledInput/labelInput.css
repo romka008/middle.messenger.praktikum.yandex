@@ -1,0 +1,48 @@
+.text-field {
+    margin: 13px 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.text-input {
+    width: 100%;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--text-color);
+    border: none;
+    border-bottom: var(--border);
+    background-color: transparent;
+    outline: none;
+}
+
+.text-span {
+    top: 5px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    pointer-events: none;
+    position: absolute;
+    color: var(--text-gray-color);
+    transition: top 0.2s ease, font-size 0.2s ease;
+}
+
+.text-input:focus + .text-span,
+.text-input:not(:placeholder-shown).text-input:not(:focus) + .text-span {
+    top: -10px;
+    font-size: 9px;
+}
+
+.text-error {
+    /* display: none; */
+    font-size: 8px;
+    padding-top: 7px;
+    position: relative;
+    top: 7px;
+    color: var(--text-validate-color);
+}
+
+.visible {
+    display: block;
+}

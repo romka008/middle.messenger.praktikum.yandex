@@ -1,0 +1,11 @@
+.text-input {
+    width: 100%;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--text-color);
+    border: none;
+    border-bottom: var(--border);
+    background-color: transparent;
+    outline: none;
+}

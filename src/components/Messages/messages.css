@@ -1,0 +1,9 @@
+.chat-page-messages-list-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    overflow-x: visible;
+    overflow-y: auto;
+    padding: 0 20px 30px;
+}

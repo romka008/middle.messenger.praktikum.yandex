@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.error-server {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-server-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-server-header {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+    color: var(--text-color);
+}
+
+.error-server-description {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--text-color);
+    padding-bottom: 89px;
+}
+
+.error-server-wrapper > a {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+}

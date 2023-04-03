@@ -1,11 +1,15 @@
 html {
     --text-color: #1e1e1e;
-    --text-gray-color: #999999;
+    --text-gray-color: #999;
     --blue-color: #3369f3;
     --background-button: var(--blue-color);
-    --red: #ff0000;
-    --button-color: #ffffff;
+    --red: #f00;
+    --button-color: #fff;
     --text-validate-color: #ff2f2f;
 
+    --background-color-chats: #fbfbfb;
+    --background-color: #efefef;
+
+    --border-color: #eaeaea;
     --border: 1px solid var(--blue-color);
 }

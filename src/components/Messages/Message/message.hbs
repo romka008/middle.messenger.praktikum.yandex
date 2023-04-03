@@ -1,0 +1,30 @@
+{{#if partner}}
+    {{#if image}}
+        <div class="image-wrapper">
+            <img src="{{{image}}}" alt="Статус" class="message-image" />
+            <div class="time-message-image">
+                {{{time}}}
+            </div>
+        </div>
+    {{else}}
+        <div class="message-wrapper partner-message">
+            <div class="message">
+                {{{message}}}
+            </div>
+            <div class="time-message">
+                {{{time}}}
+            </div>
+        </div>
+    {{/if}}
+
+{{else}}
+    <div class="message-wrapper your-message">
+        <div class="message">
+            {{{message}}}
+        </div>
+        <img src="{{{statusMessage}}}" alt="Статус" class="status-message" />
+        <div class="time-your-message">
+            {{{time}}}
+        </div>
+    </div>
+{{/if}}
