@@ -1,3 +1,6 @@
+import Block from "../modules/Block";
+import {setError} from "./setError";
+
 const checkPattern = (name: string, target: string) => {
     if (!target) return "Поле не может быть пустым";
 
@@ -57,4 +60,18 @@ export const validate = (targetObj: Record<string, string>) => {
     }
     console.log({...temp});
     return [Object.values(temp).every(x => x === ""), {...temp}];
+};
+
+export const blur = (elem: Block, event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const [, objErrors] = validate({[target.name]: target.value});
+
+    setError(elem.element, objErrors[target.name]);
+};
+
+export const focus = (elem: Block, event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const [, objErrors] = validate({[target.name]: target.value});
+
+    setError(elem.element, objErrors[target.name]);
 };

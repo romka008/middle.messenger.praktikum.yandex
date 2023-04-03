@@ -12,8 +12,8 @@
 .signin-wrapper {
     box-sizing: border-box;
     width: 340px;
-    background: #ffffff;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    background: #fff;
+    box-shadow: 0 0 6px #dbdbdb;
     border-radius: 12px;
     padding: 30px;
 }
@@ -32,12 +32,12 @@
     flex-direction: column;
 }
 
-.signin-form > .text-field:first-child {
-    margin-top: 57px;
-}
-
 .text-field:nth-child(7) {
     margin-bottom: 82px;
+}
+
+.signin-form > .text-field:first-child {
+    margin-top: 57px;
 }
 
 .signin-form__submit {

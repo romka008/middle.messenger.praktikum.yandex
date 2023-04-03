@@ -1,5 +1,5 @@
 .text-field {
-    margin: 14px 0;
+    margin: 13px 0;
     position: relative;
     display: inline-block;
     width: 100%;
@@ -17,21 +17,21 @@
     outline: none;
 }
 
-.text-input:focus + .text-span,
-.text-input:not(:placeholder-shown).text-input:not(:focus) + .text-span {
-    top: -10px;
-    font-size: 9px;
-}
-
 .text-span {
+    top: 5px;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     pointer-events: none;
     position: absolute;
     color: var(--text-gray-color);
-    inset: 0;
     transition: top 0.2s ease, font-size 0.2s ease;
+}
+
+.text-input:focus + .text-span,
+.text-input:not(:placeholder-shown).text-input:not(:focus) + .text-span {
+    top: -10px;
+    font-size: 9px;
 }
 
 .text-error {

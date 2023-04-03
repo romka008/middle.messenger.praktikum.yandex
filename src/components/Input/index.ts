@@ -16,7 +16,7 @@ interface IInputProps {
 
 export class Input extends Block<IInputProps> {
     constructor(props: IInputProps) {
-        super(props);
+        super({placeholder: " ", ...props});
     }
 
     // get node() {

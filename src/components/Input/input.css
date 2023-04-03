@@ -9,9 +9,3 @@
     background-color: transparent;
     outline: none;
 }
-
-.text-input:focus + .text-span,
-.text-input:not(:placeholder-shown).text-input:not(:focus) + .text-span {
-    top: -10px;
-    font-size: 9px;
-}

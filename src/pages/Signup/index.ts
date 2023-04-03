@@ -2,7 +2,7 @@ import Block from "../../modules/Block";
 import template from "./signup.hbs";
 import {Button} from "../../components/Button3";
 import {Input} from "../../components/Input";
-import {validate} from "../../utils/validate";
+import {blur, focus, validate} from "../../utils/validate";
 import {LabeledInput} from "../../components/LabeledInput";
 import {setError} from "../../utils/setError";
 import {Link} from "../../components/Link";
@@ -31,16 +31,10 @@ export class SignUp extends Block {
             type: "text",
             span: "Почта",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.email as Block).element, objErrors[target.name]);
+                blur(this.children.email as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.email as Block).element, objErrors[target.name]);
+                focus(this.children.email as Block, e);
             }
         });
 
@@ -49,16 +43,10 @@ export class SignUp extends Block {
             type: "text",
             span: "Логин",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.login as Block).element, objErrors[target.name]);
+                blur(this.children.login as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.login as Block).element, objErrors[target.name]);
+                focus(this.children.login as Block, e);
             }
         });
 
@@ -67,16 +55,10 @@ export class SignUp extends Block {
             type: "text",
             span: "Имя",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.firstName as Block).element, objErrors[target.name]);
+                blur(this.children.firstName as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.firstName as Block).element, objErrors[target.name]);
+                focus(this.children.firstName as Block, e);
             }
         });
 
@@ -85,16 +67,10 @@ export class SignUp extends Block {
             type: "text",
             span: "Фамилия",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.secondName as Block).element, objErrors[target.name]);
+                blur(this.children.secondName as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.secondName as Block).element, objErrors[target.name]);
+                focus(this.children.secondName as Block, e);
             }
         });
 
@@ -103,16 +79,10 @@ export class SignUp extends Block {
             type: "text",
             span: "Телефон",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.phone as Block).element, objErrors[target.name]);
+                blur(this.children.phone as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.phone as Block).element, objErrors[target.name]);
+                focus(this.children.phone as Block, e);
             }
         });
 
@@ -121,16 +91,10 @@ export class SignUp extends Block {
             type: "password",
             span: "Пароль",
             blur: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.password as Block).element, objErrors[target.name]);
+                blur(this.children.password as Block, e);
             },
             focus: e => {
-                const target = e.target as HTMLInputElement;
-                const [, objErrors] = validate({[target.name]: target.value});
-
-                setError((this.children.password as Block).element, objErrors[target.name]);
+                focus(this.children.password as Block, e);
             }
         });
 
