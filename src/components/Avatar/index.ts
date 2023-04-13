@@ -2,12 +2,16 @@ import Block from "../../modules/Block";
 import template from "./avatar.hbs";
 import "./avatar.css";
 
+interface AvatarProps {
+    path?: string;
+}
+
 export class Avatar extends Block {
-    constructor() {
-        super({});
+    constructor(props: AvatarProps) {
+        super({...props});
     }
 
-    protected render(): DocumentFragment {
-        return this.compile(template, {});
+    render() {
+        return this.compile(template, {...this.props});
     }
 }

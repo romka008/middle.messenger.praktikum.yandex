@@ -9,8 +9,10 @@
     border-radius: 50%;
 }
 
-.profile-avatar > svg {
+.profile-avatar > svg,
+profile-avatar > img {
     position: absolute;
+    width: 100px;
 }
 
 .profile-avatar-hover {
@@ -37,4 +39,55 @@
     line-height: 16px;
     text-align: center;
     color: var(--button-color);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-container .text {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.image-container:hover .text {
+    opacity: 1;
 }

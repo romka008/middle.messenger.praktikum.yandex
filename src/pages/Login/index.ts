@@ -7,6 +7,8 @@ import {blur, focus, validate} from "../../utils/validate";
 import {Link} from "../../components/Link";
 
 import "./login.css";
+import AuthController from "../../connrollers/AuthController";
+import {ISigninData} from "../../api/AuthApi";
 
 export class Login extends Block {
     constructor() {
@@ -79,7 +81,7 @@ export class Login extends Block {
     }
 
     private handleSubmit = (): void => {
-        const inputValue: Record<string, string> = {};
+        const inputValue: ISigninData = {} as ISigninData;
 
         let errors = 0;
 
@@ -90,7 +92,7 @@ export class Login extends Block {
                 const name = (input as HTMLInputElement).name;
                 const value = (input as HTMLInputElement).value;
 
-                inputValue[name] = value;
+                inputValue[name as "login" | "password"] = value;
 
                 const [statusValid, objErrors] = validate({[name]: value});
                 if (!statusValid) errors++;
@@ -103,6 +105,7 @@ export class Login extends Block {
 
         if (isValid) {
             console.log(inputValue);
+            AuthController.signin(inputValue);
         }
     };
 

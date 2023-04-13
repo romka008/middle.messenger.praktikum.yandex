@@ -1,21 +1,27 @@
 <main>
-    <div class="profile-page">
+    {{#if isLoading}}
+        Loading...
+    {{else}}
+        <div class="profile-page">
 
-        <div class="profile-wrapper">
-            {{{avatar}}}
-            {{{fieldName}}}
-            {{{fieldEmail}}}
-            {{{fieldLogin}}}
-            {{{fieldFirstName}}}
-            {{{fieldSecondName}}}
-            {{{fieldDisplayName}}}
-            {{{fieldDisplayName}}}
-            {{{fieldPhone}}}
-            {{{linkEditData}}}
-            {{{linkEditPassword}}}
-            {{{linkLogout}}}
+            <div class="profile-wrapper">
+                {{{avatar}}}
+                {{{fieldName}}}
+                {{{fieldEmail}}}
+                {{{fieldLogin}}}
+                {{{fieldFirstName}}}
+                {{{fieldSecondName}}}
+                {{{fieldDisplayName}}}
+                {{{fieldDisplayName}}}
+                {{{fieldPhone}}}
+                {{!-- {{{linkEditData}}}
+                {{{linkEditPassword}}} --}}
+                {{{editDataButton}}}
+                {{{editPasswordButton}}}
+                {{{logoutButton}}}
+            </div>
+
+            {{{backInChats}}}
         </div>
-
-        {{{backInChats}}}
-    </div>
+    {{/if}}
 </main>

@@ -176,6 +176,8 @@ class Block<P extends Record<string, any> = any> {
 
     // eslint-disable-next-line
     protected compile(template: (context: any) => string, context: any) {
+        console.log(context);
+
         const contextAndStubs = {...context};
 
         Object.entries(this.children).forEach(([name, component]) => {
