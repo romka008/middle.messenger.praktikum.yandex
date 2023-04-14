@@ -40,9 +40,11 @@ class Store extends EventBus<string> {
 
 const store = new Store();
 
+// eslint-disable-next-line
 export const withStore = (mapStateToProps: (state: IState) => any) => {
     return (Component: typeof Block) => {
         return class WithStore extends Component {
+            // eslint-disable-next-line
             constructor(props: any) {
                 const mappedState = mapStateToProps(store.getState());
                 super({...props, ...mappedState});

@@ -1,6 +1,8 @@
 <main>
     {{#if isLoading}}
-        Loading...
+        <div class="pre-loader">
+            Loading...
+        </div>
     {{else}}
         <div class="profile-page">
 
@@ -14,8 +16,6 @@
                 {{{fieldDisplayName}}}
                 {{{fieldDisplayName}}}
                 {{{fieldPhone}}}
-                {{!-- {{{linkEditData}}}
-                {{{linkEditPassword}}} --}}
                 {{{editDataButton}}}
                 {{{editPasswordButton}}}
                 {{{logoutButton}}}

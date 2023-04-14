@@ -5,12 +5,12 @@ import {Link} from "../../components/Link";
 import {BackInChats} from "../../components/BackIiChats";
 import {ProfileField} from "../../components/ProfileField";
 import {Field} from "../../components/ProfileField/Field";
-import {connect} from "../../hoc/connect";
 import authController from "../../connrollers/AuthController";
-
-import "./profile.css";
 import {Button} from "../../components/Button3";
 import router from "../../modules/Router";
+import {connect} from "../../hoc/connect";
+
+import "./profile.css";
 
 class ProfileBase extends Block {
     constructor() {
@@ -18,9 +18,7 @@ class ProfileBase extends Block {
     }
 
     protected init(): void {
-        this.children.avatar = new Avatar({
-            path: ""
-        });
+        this.children.avatar = new Avatar({});
 
         this.children.fieldName = new Field({
             name: "first_name",
@@ -74,18 +72,6 @@ class ProfileBase extends Block {
             })
         });
 
-        // this.children.linkEditData = new Link({
-        //     route: "./edit-data",
-        //     value: "Изменить данные",
-        //     className: "edit-data"
-        // });
-
-        // this.children.linkEditPassword = new Link({
-        //     route: "./edit-password",
-        //     value: "Изменить пароль",
-        //     className: "edit-password"
-        // });
-
         this.children.editDataButton = new Button({
             label: "Изменить данные",
             className: "edit-data",
@@ -126,7 +112,9 @@ class ProfileBase extends Block {
     }
 
     async componentDidMount(): Promise<void> {
-        await authController.fetchUser();
+        if (!this.props.data) {
+            await authController.fetchUser();
+        }
     }
 
     _setValue() {
@@ -142,13 +130,13 @@ class ProfileBase extends Block {
         setFieldValue("fieldDisplayName", this.props.data.display_name);
         setFieldValue("fieldPhone", this.props.data.phone);
         (this.children.fieldName as Block).setProps({value: this.props.data.first_name});
-        (this.children.avatar as Block).setProps({path: this.props.data.avatar});
 
         // ((this.children["fieldEmail"] as Block).children.field as Block).setProps({"value": this.props.data.email});
         // ((this.children["fieldEmail"] as Block).children.field as Block).setProps({"value": this.props.data.email});
     }
 
     render() {
+        console.log(this.props);
         if (this.props.data) {
             this._setValue();
         }

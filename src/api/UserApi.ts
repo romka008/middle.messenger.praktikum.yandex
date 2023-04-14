@@ -53,6 +53,10 @@ export class UserApi extends BaseApi {
         return this.http.put("/password", data);
     }
 
+    editAvatar(data: FormData) {
+        return this.http.put("/profile/avatar", data, "FormData");
+    }
+
     signup(data: ISignupData) {
         return this.http.post("/signup", data);
     }

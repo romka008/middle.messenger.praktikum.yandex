@@ -1,5 +1,6 @@
 import Block from "./Block";
 
+// eslint-disable-next-line
 interface IBlockConstructor<P extends Record<string, any> = any> {
     new (props: P): Block<P>;
 }

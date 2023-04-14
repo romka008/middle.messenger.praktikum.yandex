@@ -9,6 +9,7 @@ export enum StoreEvents {
 export function connect(mapStateToProps: (state: Indexed) => Indexed) {
     return function (Component: typeof Block) {
         return class extends Component {
+            // eslint-disable-next-line
             constructor(props: any) {
                 // сохраняем начальное состояние
                 let state = mapStateToProps(store.getState());

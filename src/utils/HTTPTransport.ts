@@ -8,6 +8,8 @@ enum METHODS {
 
 type Options = {
     method: METHODS;
+    contentType?: string;
+    // eslint-disable-next-line
     data?: any;
 };
 
@@ -30,9 +32,10 @@ export default class HTTPTransport {
         });
     }
 
-    public put<Response = void>(url: string, data: unknown): Promise<Response> {
+    public put<Response = void>(url: string, data: unknown, contentType?: string): Promise<Response> {
         return this.request(this.endpoint + url, {
             method: METHODS.PUT,
+            contentType,
             data
         });
     }
@@ -45,7 +48,7 @@ export default class HTTPTransport {
     }
 
     private request<Response>(url: string, options: Options = {method: METHODS.GET}): Promise<Response> {
-        const {method, data} = options;
+        const {method, data, contentType} = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -70,10 +73,15 @@ export default class HTTPTransport {
             xhr.onerror = () => reject({reason: "network error"});
             xhr.ontimeout = () => reject({reason: "timeout"});
 
-            xhr.setRequestHeader("Content-Type", "application/json");
-
             xhr.withCredentials = true;
             xhr.responseType = "json";
+
+            if (contentType === "FormData") {
+                xhr.send(data);
+                return;
+            } else {
+                xhr.setRequestHeader("Content-Type", "application/json");
+            }
 
             if (method === METHODS.GET || !data) {
                 xhr.send();

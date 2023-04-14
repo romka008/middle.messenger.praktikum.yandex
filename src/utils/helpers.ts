@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export type Indexed<T = any> = {
     [key in string]: T;
 };
@@ -42,8 +43,9 @@ export function isEqual(lhs: Indexed, rhs: Indexed) {
 }
 
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
-    for (let p in rhs) {
-        if (!rhs.hasOwnProperty(p)) {
+    for (const p in rhs) {
+        if (!Object.prototype.hasOwnProperty.call(rhs, p)) {
+            // if (!rhs.hasOwnProperty(p)) {
             continue;
         }
 
@@ -74,6 +76,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
         (acc, key) => ({
             [key]: acc
         }),
+        // eslint-disable-next-line
         value as any
     );
     return merge(object as Indexed, result);
@@ -93,14 +96,16 @@ export function cloneDeep<T extends object = object>(obj: T) {
         return obj;
     }
 
+    // eslint-disable-next-line
     let copy: any = Array.isArray(obj) ? [] : {};
-    for (let key in obj) {
+    for (const key in obj) {
         const value = obj[key];
         copy[key] = cloneDeep(value as object);
     }
     return copy;
 }
 
+// eslint-disable-next-line
 type StringIndexed = Record<string, any>;
 
 const obj: StringIndexed = {
@@ -151,4 +156,12 @@ export function queryStringify(data: StringIndexed): string | never {
 
         return `${result}${key}=${value}${endLine}`;
     }, "");
+}
+
+export function addPreLoader() {
+    (document.querySelector("body") as HTMLElement).classList.add("pre-loader");
+}
+
+export function removePreLoader() {
+    (document.querySelector("body") as HTMLElement).classList.remove("pre-loader");
 }

@@ -39,11 +39,33 @@ class AuthController {
     }
 
     async fetchUser() {
+        // store.set("user.isLoading", true);
+        // console.log(store);
+        // await this.api.getUser().then(user => {
+        //     store.set("user.data", user);
+        // });
+        // console.log(store);
+        // store.set("user.isLoading", false);
+
+        // store.set("user.isLoading", true);
+        // await this.api
+        //     .getUser()
+        //     .then(user => {
+        //         store.set("user.data", user);
+        //     })
+        //     .finally(() => {
+        //         setTimeout(() => store.set("user.isLoading", false), 0);
+        //     });
+
         store.set("user.isLoading", true);
-        await this.api.getUser().then(user => {
-            store.set("user.data", user);
-        });
-        store.set("user.isLoading", false);
+        await this.api
+            .getUser()
+            .then(user => {
+                store.set("user.data", user);
+            })
+            .finally(() => {
+                store.set("user.isLoading", false);
+            });
     }
 }
 

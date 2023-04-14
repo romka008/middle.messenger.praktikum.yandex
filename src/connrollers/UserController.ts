@@ -1,7 +1,6 @@
-import {ISigninData, ISignupData} from "../api/AuthApi";
 import {IEditPasswordData, IEditProfileData, UserApi} from "../api/UserApi";
 import router from "../modules/Router";
-import {store} from "../modules/Store";
+import AuthController from "./AuthController";
 
 class UserController {
     private api: UserApi;
@@ -25,6 +24,12 @@ class UserController {
                 router.go("/profile");
             })
             .catch(console.log);
+    }
+
+    async editAvatar(avatar: FormData) {
+        await this.api.editAvatar(avatar);
+
+        await AuthController.fetchUser();
     }
 }
 
