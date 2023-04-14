@@ -6,7 +6,7 @@ import {Avatar} from "../../../components/Avatar";
 import {Input} from "../../../components/Input";
 import {Field} from "../../../components/ProfileField/Field";
 import {ProfileField} from "../../../components/ProfileField";
-import {BackInChats} from "../../../components/BackIiChats";
+import {BackInChats} from "../../../components/BackInChats";
 import "./editPassword.css";
 import {blur, focus, validate} from "../../../utils/validate";
 import {setError} from "../../../utils/setError";

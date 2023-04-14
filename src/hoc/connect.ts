@@ -28,7 +28,7 @@ export function connect(mapStateToProps: (state: Indexed) => Indexed) {
 
                     // не забываем сохранить новое состояние
                     state = newState;
-                    console.log(state);
+                    // console.log(state);
                 });
             }
         };

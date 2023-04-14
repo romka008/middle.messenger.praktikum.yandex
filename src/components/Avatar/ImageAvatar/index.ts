@@ -16,7 +16,6 @@ export class ImageAvatar extends Block {
     }
 
     render() {
-        console.log(this.props);
         return this.compile(template, {...this.props});
     }
 }

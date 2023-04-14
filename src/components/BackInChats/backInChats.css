@@ -17,6 +17,11 @@
     background-color: var(--blue-color);
     position: relative;
     cursor: pointer;
+    border: none;
+}
+
+.arrow:hover {
+    background-color: var(--dark-blue-color);
 }
 
 .arrow > svg {

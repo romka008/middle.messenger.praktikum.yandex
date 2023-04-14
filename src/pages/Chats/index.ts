@@ -1,7 +1,5 @@
 import Block from "../../modules/Block";
 import template from "./chats.hbs";
-import "./chats.css";
-import {Link} from "../../components/Link";
 import {Input} from "../../components/Input";
 import {InputSearch} from "../../components/Input/InputSearch";
 import {ChatBlock} from "../../components/ChatBlock";
@@ -12,6 +10,9 @@ import {Messages} from "../../components/Messages";
 import {Message} from "../../components/Messages/Message";
 import statusMessageIcon from "../../assets/icons/read.svg";
 import cameraImage from "../../assets/image/cameraImg.png";
+import router from "../../modules/Router";
+
+import "./chats.css";
 
 export class Chats extends Block {
     constructor() {
@@ -19,10 +20,14 @@ export class Chats extends Block {
     }
 
     protected init(): void {
-        this.children.linkProfile = new Link({
-            route: "./profile",
-            value: "Профиль &gt;",
-            className: "link-profile"
+        this.children.linkProfile = new Button({
+            label: "Профиль &gt;",
+            className: "link-profile",
+            events: {
+                click: () => {
+                    router.go("/profile");
+                }
+            }
         });
 
         this.children.messages = new Messages({

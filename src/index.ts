@@ -36,15 +36,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     let isProtectedRoute = true;
 
     switch (window.location.pathname) {
-        case Routes.Home:
+        // case Routes.Home:
         case Routes.Login:
         case Routes.Register:
-        case Routes.Profile:
-        case Routes.EditProfile:
-        case Routes.EditPassword:
-        case Routes.Messenger:
-        case Routes.PageNotFound:
-        case Routes.ErrorServer:
             isProtectedRoute = false;
             break;
     }

@@ -13,13 +13,16 @@
     background-color: var(--background-color-chats);
 }
 
-.link-profile {
+.chat-page-chats__header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.link-profile > a {
+.link-profile {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    letter-spacing: 0.3px;
     align-self: flex-end;
     font-style: normal;
     font-weight: 500;
@@ -27,6 +30,17 @@
     line-height: 12px;
     color: var(--text-gray-color);
     margin: 21px 10px 23px;
+    border-radius: 3px;
+    border: none;
+    background-color: inherit;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.link-profile:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .search-block {

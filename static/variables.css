@@ -2,6 +2,7 @@ html {
     --text-color: #1e1e1e;
     --text-gray-color: #999;
     --blue-color: #3369f3;
+    --dark-blue-color: #1654d1;
     --background-button: var(--blue-color);
     --red: #f00;
     --button-color: #fff;

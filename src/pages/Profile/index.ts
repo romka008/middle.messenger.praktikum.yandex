@@ -2,7 +2,7 @@ import Block from "../../modules/Block";
 import template from "./profile.hbs";
 import {Avatar} from "../../components/Avatar";
 import {Link} from "../../components/Link";
-import {BackInChats} from "../../components/BackIiChats";
+import {BackInChats} from "../../components/BackInChats";
 import {ProfileField} from "../../components/ProfileField";
 import {Field} from "../../components/ProfileField/Field";
 import authController from "../../connrollers/AuthController";
@@ -136,7 +136,6 @@ class ProfileBase extends Block {
     }
 
     render() {
-        console.log(this.props);
         if (this.props.data) {
             this._setValue();
         }
