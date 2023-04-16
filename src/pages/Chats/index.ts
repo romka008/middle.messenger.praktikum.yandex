@@ -3,7 +3,6 @@ import template from "./chats.hbs";
 import {Input} from "../../components/Input";
 import {InputSearch} from "../../components/Input/InputSearch";
 import {ChatBlock} from "../../components/ChatBlock";
-import {Chat} from "../../components/ChatBlock/Chat";
 import {Button} from "../../components/Button3";
 import {Form} from "../../components/Form";
 import {Messages} from "../../components/Messages";
@@ -11,6 +10,7 @@ import {Message} from "../../components/Messages/Message";
 import statusMessageIcon from "../../assets/icons/read.svg";
 import cameraImage from "../../assets/image/cameraImg.png";
 import router from "../../modules/Router";
+import ChatsController from "../../connrollers/ChatsController";
 
 import "./chats.css";
 
@@ -67,52 +67,10 @@ export class Chats extends Block {
                 placeholder: "Поиск"
             })
         });
-        this.children.сhatBlock = new ChatBlock({
-            chats: [
-                new Chat({
-                    nameChat: "Андрей",
-                    previewMessage: "Изображение",
-                    messageTime: "10:49",
-                    countNonReadMessage: "2"
-                }),
-                new Chat({
-                    nameChat: "Киноклуб",
-                    previewMessage: "Вы: стикер",
-                    messageTime: "12:00",
-                    countNonReadMessage: "3"
-                }),
-                new Chat({
-                    nameChat: "Илья",
-                    previewMessage: "Друзья, у меня для вас особенный выпуск новостей!...",
-                    messageTime: "15:12",
-                    countNonReadMessage: "4"
-                }),
-                new Chat({
-                    nameChat: "Вадим",
-                    previewMessage: "Вы: Круто!",
-                    messageTime: "Пт",
-                    countNonReadMessage: "1"
-                }),
-                new Chat({
-                    nameChat: "тет-а-теты",
-                    previewMessage: "И Human Interface Guidelines и Material Design рекомендуют...",
-                    messageTime: "Ср",
-                    countNonReadMessage: "4"
-                }),
-                new Chat({
-                    nameChat: "1, 2, 3",
-                    previewMessage: "Миллионы россиян ежедневно проводят десятки часов свое...",
-                    messageTime: "Пн",
-                    countNonReadMessage: "3"
-                }),
-                new Chat({
-                    nameChat: "Design Destroyer",
-                    previewMessage: "В 2008 году художник Jon Rafman  начал собирать...",
-                    messageTime: "Пн",
-                    countNonReadMessage: "1"
-                })
-            ]
-        });
+
+        this.children.сhatBlock = new ChatBlock({});
+
+        ChatsController.getChats();
 
         this.children.form = new Form({
             className: "send-message-form",

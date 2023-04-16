@@ -34,7 +34,7 @@ export class EditProfileBase extends Block {
             }
         });
 
-        this.children.avatar = new Avatar();
+        this.children.avatar = new Avatar({});
 
         this.children.fieldName = new Field({
             name: "first_name",

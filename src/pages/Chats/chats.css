@@ -57,7 +57,7 @@
 }
 
 .chat-page-chats__block {
-    height: calc(100vh - 109px);
+    height: calc(100vh - 115px);
     overflow: auto;
     overflow-x: visible;
 }

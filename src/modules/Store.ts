@@ -13,6 +13,16 @@ interface IState {
         isLoading: boolean;
         hasError: boolean;
     };
+    chats:
+        | {
+              avatar: null | string;
+              created_by: number;
+              id: number;
+              last_message: null | string;
+              title: string;
+              unread_count: number;
+          }[]
+        | [];
 }
 
 const inintialState: IState = {
@@ -20,7 +30,8 @@ const inintialState: IState = {
         data: null,
         isLoading: true,
         hasError: false
-    }
+    },
+    chats: []
 };
 
 // наследуем Store от EventBus, чтобы его методы были сразу доступны у экземпляра Store

@@ -8,7 +8,7 @@
                     {{{nameChat}}}
                 </div>
                 <div class="chat-left-preview__text-chat">
-                    {{{previewMessage}}}
+                    {{{lastMessage}}}
                 </div>
             </div>
         </div>
@@ -17,9 +17,12 @@
                 <div class="chat-right-preview__time-message">
                     {{{messageTime}}}
                 </div>
-                <div class="chat-left-preview__non-read-messages">
-                    {{{countNonReadMessage}}}
-                </div>
+                {{#if unreadCount}}
+                    <div class="chat-left-preview__non-read-messages {{{unreadCountClasssName}}}">
+                        {{{unreadCount}}}
+                    </div>
+                {{/if}}
+
             </div>
         </div>
     </div>

@@ -1,20 +1,5 @@
 import {BaseApi} from "./BaseAPI";
 
-export interface ISignupData {
-    first_name: string;
-    second_name: string;
-    login: string;
-    email: string;
-    password: string;
-    again_password: string;
-    phone: string;
-}
-
-export interface ISigninData {
-    login: string;
-    password: string;
-}
-
 export interface IUser {
     id: number;
     first_name: string;
@@ -46,7 +31,7 @@ export class UserApi extends BaseApi {
     }
 
     editProfile(data: IEditProfileData) {
-        return this.http.put("/profile", data);
+        return this.http.put<IUser>("/profile", data);
     }
 
     editPassword(data: IEditPasswordData) {
@@ -54,23 +39,7 @@ export class UserApi extends BaseApi {
     }
 
     editAvatar(data: FormData) {
-        return this.http.put("/profile/avatar", data, "FormData");
-    }
-
-    signup(data: ISignupData) {
-        return this.http.post("/signup", data);
-    }
-
-    signin(data: ISigninData) {
-        return this.http.post("/signin", data);
-    }
-
-    logout() {
-        return this.http.post("/logout");
-    }
-
-    getUser() {
-        return this.http.get<IUser>("/user");
+        return this.http.put<IUser>("/profile/avatar", data, "FormData");
     }
 
     create = undefined;
