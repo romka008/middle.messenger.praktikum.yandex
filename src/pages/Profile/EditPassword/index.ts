@@ -156,7 +156,6 @@ class EditPasswordBase extends Block {
 
     render() {
         if (this.props.data) {
-            console.log(this.props.data);
             (this.children.avatar as Block).setProps({path: this.props.data.avatar});
         }
         return this.compile(template, {...this.props});

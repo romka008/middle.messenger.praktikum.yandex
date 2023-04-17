@@ -66,6 +66,7 @@ class AuthController {
             .finally(() => {
                 store.set("user.isLoading", false);
             });
+        console.log(store);
     }
 }
 

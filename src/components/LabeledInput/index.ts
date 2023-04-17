@@ -28,10 +28,10 @@ export class LabeledInput extends Block<ILabeledInputProps> {
 
             events: {
                 blur: e => {
-                    return this.props.blur(e);
+                    if (this.props.blur) return this.props.blur(e);
                 },
                 focus: e => {
-                    return this.props.focus(e);
+                    if (this.props.focus) return this.props.focus(e);
                 }
             }
         });

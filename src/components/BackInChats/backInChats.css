@@ -24,8 +24,8 @@
     background-color: var(--dark-blue-color);
 }
 
-.arrow > svg {
+.arrow > img {
     position: absolute;
     top: 8px;
-    left: 8px;
+    left: 9px;
 }

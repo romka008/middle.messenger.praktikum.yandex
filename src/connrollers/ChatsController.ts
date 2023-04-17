@@ -12,6 +12,12 @@ class ChatsController {
         console.log(chats);
         store.set("chats", chats);
     }
+
+    async createChat(data: {title: string}) {
+        await this.api.create(data);
+
+        this.getChats();
+    }
 }
 
 export default new ChatsController();

@@ -165,3 +165,20 @@ export function addPreLoader() {
 export function removePreLoader() {
     (document.querySelector("body") as HTMLElement).classList.remove("pre-loader");
 }
+
+export const getTime = (str: string) => {
+    const date = new Date(str);
+    return `${date.getHours()}:${date.getMinutes()}`;
+};
+
+export const openModal = (a: Element | null) => {
+    a?.classList.add("modal__open");
+    document.querySelector(".wrapper")?.classList.add("wrapper__dark__background");
+    (document.querySelector(".chat-page") as HTMLElement).style.opacity = "0.4";
+};
+
+export const closeModal = (a: Element | null) => {
+    a?.classList.remove("modal__open");
+    document.querySelector(".wrapper")?.classList.remove("wrapper__dark__background");
+    (document.querySelector(".chat-page") as HTMLElement).style.opacity = "1";
+};

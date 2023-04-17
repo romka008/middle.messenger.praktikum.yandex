@@ -203,10 +203,7 @@ export class EditProfileBase extends Block {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.props.data);
         if (this.props.data) {
-            console.log(this.props.data);
             this._setValue();
         }
         return this.compile(template, {...this.props});

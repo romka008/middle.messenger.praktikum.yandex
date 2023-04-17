@@ -28,7 +28,10 @@ export class ChatsApi extends BaseApi {
         return this.http.get<IChats[]>("");
     }
 
-    create = undefined;
+    create(data: {title: string}) {
+        return this.http.post("", data);
+    }
+
     read = undefined;
     update = undefined;
     delete = undefined;

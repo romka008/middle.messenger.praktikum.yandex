@@ -2,6 +2,7 @@ import Block from "../../modules/Block";
 import template from "./chatBlock.hbs";
 import {connect} from "../../hoc/connect";
 import {Chat} from "./Chat";
+import {getTime} from "../../utils/helpers";
 
 import "./chatBlock.css";
 
@@ -39,7 +40,7 @@ export class ChatBlockBase extends Block<IChatBlockProps> {
             return new Chat({
                 nameChat: el.title,
                 lastMessage: el.last_message?.content,
-                messageTime: el.last_message?.time,
+                messageTime: el.last_message?.time ? getTime(el.last_message?.time) : "",
                 unreadCount: el.unread_count
             });
         });

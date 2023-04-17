@@ -11,6 +11,9 @@ import statusMessageIcon from "../../assets/icons/read.svg";
 import cameraImage from "../../assets/image/cameraImg.png";
 import router from "../../modules/Router";
 import ChatsController from "../../connrollers/ChatsController";
+import sendIcon from "../../assets/icons/sendIcon.svg";
+import {ModalCreateChat} from "./ModalCreateChat";
+import {openModal} from "../../utils/helpers";
 
 import "./chats.css";
 
@@ -26,6 +29,28 @@ export class Chats extends Block {
             events: {
                 click: () => {
                     router.go("/profile");
+                }
+            }
+        });
+        this.children.modalCreateChat = new ModalCreateChat();
+
+        this.children.buttonShowAddChatMenu = new Button({
+            label: "+",
+            className: "chat-page__add-chat",
+            events: {
+                click: () => {
+                    document.querySelector(".add-chat__menu")?.classList.toggle("menu-visible");
+                }
+            }
+        });
+
+        this.children.buttonShowModalAddChat = new Button({
+            label: "Добавить чат",
+            className: "show-modal__add-chat",
+            events: {
+                click: () => {
+                    openModal(document.querySelector(".modal-window__create-chat"));
+                    document.querySelector(".add-chat__menu")?.classList.toggle("menu-visible");
                 }
             }
         });
@@ -83,44 +108,25 @@ export class Chats extends Block {
                 })
             ],
 
-            button: new Button({
-                className: "send-message",
-                svg: `<svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L5 6L1 11" stroke="white" stroke-width="1.6"/>
-            </svg>`,
-                type: "submit",
-                events: {
-                    click: e => {
-                        e.preventDefault();
-                        const form = document.querySelector("form");
-                        if (form) {
-                            const formData = new FormData(form);
-                            const formDataObj: Record<string, unknown> = {};
-                            formData.forEach((value, key) => (formDataObj[key] = value));
-                            console.log(formDataObj);
+            buttons: [
+                new Button({
+                    className: "send-message",
+                    svg: sendIcon,
+                    type: "submit",
+                    events: {
+                        click: e => {
+                            e.preventDefault();
+                            const form = document.querySelector("form");
+                            if (form) {
+                                const formData = new FormData(form);
+                                const formDataObj: Record<string, unknown> = {};
+                                formData.forEach((value, key) => (formDataObj[key] = value));
+                                console.log(formDataObj);
+                            }
                         }
                     }
-                }
-            })
-        });
-        this.children.inputSendMessage = new Input({
-            name: "message",
-            type: "text",
-            className: "input-message",
-            placeholder: "Сообщение"
-        });
-        this.children.buttonSendMessage = new Button({
-            className: "send-message",
-            svg: `<svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L5 6L1 11" stroke="white" stroke-width="1.6"/>
-            </svg>`,
-            events: {
-                click: e => {
-                    e.preventDefault();
-
-                    console.log((this.children.inputSendMessage as Input).value);
-                }
-            }
+                })
+            ]
         });
     }
 
