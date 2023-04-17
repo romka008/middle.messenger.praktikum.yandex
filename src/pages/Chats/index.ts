@@ -1,17 +1,21 @@
 import Block from "../../modules/Block";
 import template from "./chats.hbs";
-import "./chats.css";
-import {Link} from "../../components/Link";
 import {Input} from "../../components/Input";
 import {InputSearch} from "../../components/Input/InputSearch";
 import {ChatBlock} from "../../components/ChatBlock";
-import {Chat} from "../../components/ChatBlock/Chat";
 import {Button} from "../../components/Button3";
 import {Form} from "../../components/Form";
 import {Messages} from "../../components/Messages";
 import {Message} from "../../components/Messages/Message";
 import statusMessageIcon from "../../assets/icons/read.svg";
 import cameraImage from "../../assets/image/cameraImg.png";
+import router from "../../modules/Router";
+import ChatsController from "../../connrollers/ChatsController";
+import sendIcon from "../../assets/icons/sendIcon.svg";
+import {ModalCreateChat} from "./ModalCreateChat";
+import {openModal} from "../../utils/helpers";
+
+import "./chats.css";
 
 export class Chats extends Block {
     constructor() {
@@ -19,10 +23,36 @@ export class Chats extends Block {
     }
 
     protected init(): void {
-        this.children.linkProfile = new Link({
-            route: "./profile",
-            value: "Профиль &gt;",
-            className: "link-profile"
+        this.children.linkProfile = new Button({
+            label: "Профиль &gt;",
+            className: "link-profile",
+            events: {
+                click: () => {
+                    router.go("/profile");
+                }
+            }
+        });
+        this.children.modalCreateChat = new ModalCreateChat();
+
+        this.children.buttonShowAddChatMenu = new Button({
+            label: "+",
+            className: "chat-page__add-chat",
+            events: {
+                click: () => {
+                    document.querySelector(".add-chat__menu")?.classList.toggle("menu-visible");
+                }
+            }
+        });
+
+        this.children.buttonShowModalAddChat = new Button({
+            label: "Добавить чат",
+            className: "show-modal__add-chat",
+            events: {
+                click: () => {
+                    openModal(document.querySelector(".modal-window__create-chat"));
+                    document.querySelector(".add-chat__menu")?.classList.toggle("menu-visible");
+                }
+            }
         });
 
         this.children.messages = new Messages({
@@ -62,52 +92,10 @@ export class Chats extends Block {
                 placeholder: "Поиск"
             })
         });
-        this.children.сhatBlock = new ChatBlock({
-            chats: [
-                new Chat({
-                    nameChat: "Андрей",
-                    previewMessage: "Изображение",
-                    messageTime: "10:49",
-                    countNonReadMessage: "2"
-                }),
-                new Chat({
-                    nameChat: "Киноклуб",
-                    previewMessage: "Вы: стикер",
-                    messageTime: "12:00",
-                    countNonReadMessage: "3"
-                }),
-                new Chat({
-                    nameChat: "Илья",
-                    previewMessage: "Друзья, у меня для вас особенный выпуск новостей!...",
-                    messageTime: "15:12",
-                    countNonReadMessage: "4"
-                }),
-                new Chat({
-                    nameChat: "Вадим",
-                    previewMessage: "Вы: Круто!",
-                    messageTime: "Пт",
-                    countNonReadMessage: "1"
-                }),
-                new Chat({
-                    nameChat: "тет-а-теты",
-                    previewMessage: "И Human Interface Guidelines и Material Design рекомендуют...",
-                    messageTime: "Ср",
-                    countNonReadMessage: "4"
-                }),
-                new Chat({
-                    nameChat: "1, 2, 3",
-                    previewMessage: "Миллионы россиян ежедневно проводят десятки часов свое...",
-                    messageTime: "Пн",
-                    countNonReadMessage: "3"
-                }),
-                new Chat({
-                    nameChat: "Design Destroyer",
-                    previewMessage: "В 2008 году художник Jon Rafman  начал собирать...",
-                    messageTime: "Пн",
-                    countNonReadMessage: "1"
-                })
-            ]
-        });
+
+        this.children.сhatBlock = new ChatBlock({});
+
+        ChatsController.getChats();
 
         this.children.form = new Form({
             className: "send-message-form",
@@ -120,44 +108,25 @@ export class Chats extends Block {
                 })
             ],
 
-            button: new Button({
-                className: "send-message",
-                svg: `<svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L5 6L1 11" stroke="white" stroke-width="1.6"/>
-            </svg>`,
-                type: "submit",
-                events: {
-                    click: e => {
-                        e.preventDefault();
-                        const form = document.querySelector("form");
-                        if (form) {
-                            const formData = new FormData(form);
-                            const formDataObj: Record<string, unknown> = {};
-                            formData.forEach((value, key) => (formDataObj[key] = value));
-                            console.log(formDataObj);
+            buttons: [
+                new Button({
+                    className: "send-message",
+                    svg: sendIcon,
+                    type: "submit",
+                    events: {
+                        click: e => {
+                            e.preventDefault();
+                            const form = document.querySelector("form");
+                            if (form) {
+                                const formData = new FormData(form);
+                                const formDataObj: Record<string, unknown> = {};
+                                formData.forEach((value, key) => (formDataObj[key] = value));
+                                console.log(formDataObj);
+                            }
                         }
                     }
-                }
-            })
-        });
-        this.children.inputSendMessage = new Input({
-            name: "message",
-            type: "text",
-            className: "input-message",
-            placeholder: "Сообщение"
-        });
-        this.children.buttonSendMessage = new Button({
-            className: "send-message",
-            svg: `<svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L5 6L1 11" stroke="white" stroke-width="1.6"/>
-            </svg>`,
-            events: {
-                click: e => {
-                    e.preventDefault();
-
-                    console.log((this.children.inputSendMessage as Input).value);
-                }
-            }
+                })
+            ]
         });
     }
 

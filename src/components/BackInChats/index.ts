@@ -1,5 +1,9 @@
 import Block from "../../modules/Block";
 import template from "./backInChats.hbs";
+import {Button} from "../Button3";
+import router from "../../modules/Router";
+import backIcon from "../../assets/icons/backIcon.svg";
+
 import "./backInChats.css";
 
 interface IBackInChatsProps {
@@ -9,6 +13,18 @@ interface IBackInChatsProps {
 export class BackInChats extends Block<IBackInChatsProps> {
     constructor(props: IBackInChatsProps) {
         super({route: "./chats", ...props});
+    }
+
+    protected init(): void {
+        this.children.backInChatsButton = new Button({
+            className: "arrow",
+            events: {
+                click: () => {
+                    router.go("/chats");
+                }
+            },
+            svg: backIcon
+        });
     }
 
     protected render(): DocumentFragment {

@@ -13,13 +13,16 @@
     background-color: var(--background-color-chats);
 }
 
-.link-profile {
+.chat-page-chats__header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.link-profile > a {
+.link-profile {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    letter-spacing: 0.3px;
     align-self: flex-end;
     font-style: normal;
     font-weight: 500;
@@ -27,11 +30,23 @@
     line-height: 12px;
     color: var(--text-gray-color);
     margin: 21px 10px 23px;
+    border-radius: 3px;
+    border: none;
+    background-color: inherit;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.link-profile:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .search-block {
     display: flex;
     position: relative;
+    flex-grow: 1;
     padding: 0 10px 14px;
 }
 
@@ -43,7 +58,7 @@
 }
 
 .chat-page-chats__block {
-    height: calc(100vh - 109px);
+    height: calc(100vh - 116px);
     overflow: auto;
     overflow-x: visible;
 }
@@ -143,4 +158,73 @@
 
 .icon-attachment:hover {
     cursor: pointer;
+}
+
+.chat-page-wrapper-search-block {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.chat-page__add-chat {
+    height: 34px;
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    border-radius: 50%;
+    background-color: inherit;
+    color: var(--blue-color);
+    border: none;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-page__add-chat:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.add-chat__menu {
+    left: 270px;
+    top: 40px;
+    display: block;
+    display: none;
+    font-weight: 500;
+    font-size: 12px;
+    white-space: nowrap;
+    line-height: 14px;
+    color: var(--text-color);
+    background-color: #fff;
+    box-shadow: 0 0 6px #9999991a;
+    border-radius: 12px;
+    z-index: 10;
+    position: absolute;
+    padding: 15px 0;
+}
+
+.menu-visible {
+    display: block;
+}
+
+.show-modal__add-chat {
+    color: var(--text-color);
+    background-color: #fff;
+    border: none;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+.show-modal__add-chat:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.wrapper__dark__background {
+    background-color: #000;
+    opacity: 0.4;
 }

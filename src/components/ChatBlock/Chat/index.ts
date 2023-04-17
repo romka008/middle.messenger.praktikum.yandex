@@ -5,9 +5,9 @@ import "./chat.css";
 
 interface IChatProps {
     nameChat: string;
-    previewMessage: string;
+    lastMessage?: string | null;
     messageTime?: string;
-    countNonReadMessage?: string;
+    unreadCount?: number;
 }
 
 export class Chat extends Block<IChatProps> {
