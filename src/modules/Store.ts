@@ -7,22 +7,37 @@ export enum StoreEvents {
     Updated = "updated"
 }
 
+export interface IInfoChat {
+    avatar: null | string;
+    created_by: number;
+    id: number;
+    last_message: null | string;
+    title: string;
+    unread_count: number;
+}
+
 interface IState {
     user: {
         data: null | IUser;
         isLoading: boolean;
         hasError: boolean;
     };
-    chats:
+    chats: IInfoChat[] | [];
+    foundUsers:
         | {
-              avatar: null | string;
-              created_by: number;
               id: number;
-              last_message: null | string;
-              title: string;
-              unread_count: number;
+              login: string;
+              first_name: string;
+              second_name: string;
+              display_name: null | string;
+              avatar: null | string;
+              email: string;
+              phone: string;
           }[]
         | [];
+    activeChat: number | null;
+    // eslint-disable-next-line
+    messages?: any;
 }
 
 const inintialState: IState = {
@@ -31,7 +46,9 @@ const inintialState: IState = {
         isLoading: true,
         hasError: false
     },
-    chats: []
+    chats: [],
+    foundUsers: [],
+    activeChat: null
 };
 
 // наследуем Store от EventBus, чтобы его методы были сразу доступны у экземпляра Store

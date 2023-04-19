@@ -1,26 +1,31 @@
-import Block from "../../../modules/Block";
-import template from "./modalCreateChat.hbs";
-import {Button} from "../../../components/Button3";
-import {Form} from "../../../components/Form";
-import ChatsController from "../../../connrollers/ChatsController";
-import {LabeledInput} from "../../../components/LabeledInput";
-import {closeModal} from "../../../utils/helpers";
+import Block from "../../../../modules/Block";
+import template from "./modalAddUser.hbs";
+import {Button} from "../../../../components/Button3";
+import {Form} from "../../../../components/Form";
+import {LabeledInput} from "../../../../components/LabeledInput";
+import {closeModal} from "../../../../utils/helpers";
+import UserController from "../../../../connrollers/UserController";
+import {FoundListUsers} from "../../../../components/ChatBlock/FoundListUsers";
+import {store} from "../../../../modules/Store";
+import {Input} from "../../../../components/Input";
 
-import "./modalCreateChat.css";
+import "../modals.css";
 
-export class ModalCreateChat extends Block {
+export class ModalAddUser extends Block {
     constructor() {
         super({});
     }
 
     protected init(): void {
+        this.children.foundListUsers = new FoundListUsers({});
+
         this.children.formAddChat = new Form({
             className: "modal__form",
             inputs: [
                 new LabeledInput({
-                    name: "title",
+                    name: "login",
                     type: "text",
-                    span: "Заголовок"
+                    span: "Логин"
                 })
                 // new Input({
                 //     name: "title",
@@ -33,7 +38,7 @@ export class ModalCreateChat extends Block {
             buttons: [
                 new Button({
                     className: "modal__send",
-                    label: "Добавить чат",
+                    label: "Найти",
                     type: "submit",
                     events: {
                         click: e => {
@@ -50,7 +55,12 @@ export class ModalCreateChat extends Block {
                     events: {
                         click: e => {
                             e.preventDefault();
-                            closeModal(document.querySelector(".modal-window__create-chat"));
+                            (
+                                ((this.children.formAddChat as Block).children.inputs as Block[])[0].children
+                                    .input as Input
+                            ).value = "";
+                            closeModal(document.querySelector(".modal-window__add-user"));
+                            store.set("foundUsers", undefined);
                         }
                     }
                 })
@@ -64,9 +74,14 @@ export class ModalCreateChat extends Block {
             const formData = new FormData(form);
             const formDataObj: Record<string, unknown> = {};
             formData.forEach((value, key) => (formDataObj[key] = value));
-            if (formDataObj.title) {
-                ChatsController.createChat(formDataObj as {title: string});
-                closeModal(document.querySelector(".modal-window__create-chat"));
+            if (formDataObj.login) {
+                // ChatsController.createChat(formDataObj as {title: string});
+                console.log(formDataObj);
+                UserController.searchUsers(formDataObj.login as string).then(data => {
+                    store.set("foundUsers", data);
+                    console.log(data);
+                });
+                // closeModal(document.querySelector(".modal-window__add-user"));
             }
         }
     }

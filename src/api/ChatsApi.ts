@@ -1,4 +1,5 @@
 import {BaseApi} from "./BaseAPI";
+import {queryStringify} from "../utils/helpers";
 
 export interface IChats {
     id: number;
@@ -28,11 +29,18 @@ export class ChatsApi extends BaseApi {
         return this.http.get<IChats[]>("");
     }
 
+    getChatsByTitle(title: string) {
+        return this.http.get<IChats[]>(`?${queryStringify({title})}`);
+    }
+
     create(data: {title: string}) {
         return this.http.post("", data);
     }
 
+    delete(data: {id: number}) {
+        return this.http.delete("", {chatId: data.id});
+    }
+
     read = undefined;
     update = undefined;
-    delete = undefined;
 }

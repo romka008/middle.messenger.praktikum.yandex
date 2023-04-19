@@ -1,6 +1,17 @@
 .chat-block {
     height: 69px;
-    border-top: 1px solid #eaeaea;
+    cursor: pointer;
+    border-top: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.chat-block:hover {
+    background-color: #e4edfd;
+    transition: all 0.3s ease;
+}
+
+.chat__active {
+    background-color: #e4edfd;
 }
 
 .chat-left {

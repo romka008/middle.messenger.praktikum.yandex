@@ -4,16 +4,17 @@ import {Input} from "../../components/Input";
 import {InputSearch} from "../../components/Input/InputSearch";
 import {ChatBlock} from "../../components/ChatBlock";
 import {Button} from "../../components/Button3";
-import {Form} from "../../components/Form";
 import {Messages} from "../../components/Messages";
 import {Message} from "../../components/Messages/Message";
 import statusMessageIcon from "../../assets/icons/read.svg";
+import addChat from "../../assets/icons/addUserIcon.svg";
 import cameraImage from "../../assets/image/cameraImg.png";
 import router from "../../modules/Router";
 import ChatsController from "../../connrollers/ChatsController";
-import sendIcon from "../../assets/icons/sendIcon.svg";
-import {ModalCreateChat} from "./ModalCreateChat";
+import {ModalCreateChat} from "./modals/ModalCreateChat";
 import {openModal} from "../../utils/helpers";
+import {ModalAddUser} from "./modals/ModalAddUser";
+import {MainBlockChat} from "./MainBlockChat";
 
 import "./chats.css";
 
@@ -23,6 +24,7 @@ export class Chats extends Block {
     }
 
     protected init(): void {
+        this.children.mainBlockChat = new MainBlockChat({});
         this.children.linkProfile = new Button({
             label: "Профиль &gt;",
             className: "link-profile",
@@ -33,6 +35,7 @@ export class Chats extends Block {
             }
         });
         this.children.modalCreateChat = new ModalCreateChat();
+        this.children.modalAddUser = new ModalAddUser();
 
         this.children.buttonShowAddChatMenu = new Button({
             label: "+",
@@ -46,7 +49,8 @@ export class Chats extends Block {
 
         this.children.buttonShowModalAddChat = new Button({
             label: "Добавить чат",
-            className: "show-modal__add-chat",
+            className: "item-menu",
+            svg: addChat,
             events: {
                 click: () => {
                     openModal(document.querySelector(".modal-window__create-chat"));
@@ -89,45 +93,24 @@ export class Chats extends Block {
                 name: "search",
                 type: "text",
                 className: "search-chat",
-                placeholder: "Поиск"
+                placeholder: "Поиск",
+                events: {
+                    change: () => {
+                        const {value} = (this.children.inputSearch as Block).children.input as Input;
+                        console.log(value);
+                        if (value) {
+                            ChatsController.getChatsByTitle(value);
+                        } else {
+                            ChatsController.getChats();
+                        }
+                    }
+                }
             })
         });
 
         this.children.сhatBlock = new ChatBlock({});
 
         ChatsController.getChats();
-
-        this.children.form = new Form({
-            className: "send-message-form",
-            inputs: [
-                new Input({
-                    name: "message",
-                    type: "text",
-                    className: "input-message",
-                    placeholder: "Сообщение"
-                })
-            ],
-
-            buttons: [
-                new Button({
-                    className: "send-message",
-                    svg: sendIcon,
-                    type: "submit",
-                    events: {
-                        click: e => {
-                            e.preventDefault();
-                            const form = document.querySelector("form");
-                            if (form) {
-                                const formData = new FormData(form);
-                                const formDataObj: Record<string, unknown> = {};
-                                formData.forEach((value, key) => (formDataObj[key] = value));
-                                console.log(formDataObj);
-                            }
-                        }
-                    }
-                })
-            ]
-        });
     }
 
     render() {

@@ -9,7 +9,7 @@ class ChatsController {
 
     async getChats() {
         const chats = await this.api.getChats();
-        console.log(chats);
+        // console.log(chats);
         store.set("chats", chats);
     }
 
@@ -17,6 +17,18 @@ class ChatsController {
         await this.api.create(data);
 
         this.getChats();
+    }
+
+    async deleteChat(data: {id: number}) {
+        await this.api.delete(data);
+
+        this.getChats();
+    }
+
+    async getChatsByTitle(title: string) {
+        const chats = await this.api.getChatsByTitle(title);
+        // console.log(chats);
+        store.set("chats", chats);
     }
 }
 

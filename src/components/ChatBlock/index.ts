@@ -5,6 +5,7 @@ import {Chat} from "./Chat";
 import {getTime} from "../../utils/helpers";
 
 import "./chatBlock.css";
+import {store} from "../../modules/Store";
 
 interface IChatBlockProps {
     chats: IChat[];
@@ -38,10 +39,16 @@ export class ChatBlockBase extends Block<IChatBlockProps> {
         // console.log(chats);
         return (chats.chats || []).map(el => {
             return new Chat({
+                id: el.id,
                 nameChat: el.title,
                 lastMessage: el.last_message?.content,
                 messageTime: el.last_message?.time ? getTime(el.last_message?.time) : "",
-                unreadCount: el.unread_count
+                unreadCount: el.unread_count,
+                events: {
+                    click: () => {
+                        store.set("activeChat", el.id);
+                    }
+                }
             });
         });
     }

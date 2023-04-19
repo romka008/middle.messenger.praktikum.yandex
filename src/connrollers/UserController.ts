@@ -31,6 +31,10 @@ class UserController {
 
         await AuthController.fetchUser();
     }
+
+    searchUsers(login: string) {
+        return this.api.search(login);
+    }
 }
 
 export default new UserController();
