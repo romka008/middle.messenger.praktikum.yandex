@@ -17,3 +17,5 @@
 ### [Ссылка](https://github.com/romka008/middle.messenger.praktikum.yandex/pull/7) на пулл-реквест первого спринта.
 
 ### [Ссылка](https://github.com/romka008/middle.messenger.praktikum.yandex/pull/11) на пулл-реквест второго спринта.
+
+### [Ссылка](https://github.com/romka008/middle.messenger.praktikum.yandex/pull/13) на пулл-реквест третьего спринта.
