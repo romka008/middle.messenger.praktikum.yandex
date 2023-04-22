@@ -1,4 +1,6 @@
-.modal-window__create-chat {
+.modal-window__create-chat,
+.modal-window__add-user,
+.modal-window__delete-user {
     color: #000;
     position: fixed;
     height: 100%;

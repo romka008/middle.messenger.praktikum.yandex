@@ -42,6 +42,10 @@ export class UserApi extends BaseApi {
         return this.http.put<IUser>("/profile/avatar", data, "FormData");
     }
 
+    search(login: string) {
+        return this.http.post<IUser[]>("/search", {login});
+    }
+
     create = undefined;
     read = undefined;
     update = undefined;

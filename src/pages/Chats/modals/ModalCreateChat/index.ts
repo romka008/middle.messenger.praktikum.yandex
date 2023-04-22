@@ -1,12 +1,12 @@
-import Block from "../../../modules/Block";
+import Block from "../../../../modules/Block";
 import template from "./modalCreateChat.hbs";
-import {Button} from "../../../components/Button3";
-import {Form} from "../../../components/Form";
-import ChatsController from "../../../connrollers/ChatsController";
-import {LabeledInput} from "../../../components/LabeledInput";
-import {closeModal} from "../../../utils/helpers";
+import {Button} from "../../../../components/Button3";
+import {Form} from "../../../../components/Form";
+import ChatsController from "../../../../connrollers/ChatsController";
+import {LabeledInput} from "../../../../components/LabeledInput";
+import {closeModal} from "../../../../utils/helpers";
 
-import "./modalCreateChat.css";
+import "../modals.css";
 
 export class ModalCreateChat extends Block {
     constructor() {

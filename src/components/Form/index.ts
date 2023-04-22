@@ -10,6 +10,7 @@ interface IFormProps {
     buttons?: Block | Button[];
     link?: Block;
     className?: string;
+    id?: string;
 }
 
 export class Form extends Block<IFormProps> {

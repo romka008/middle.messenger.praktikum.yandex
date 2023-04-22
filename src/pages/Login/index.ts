@@ -109,16 +109,6 @@ export class Login extends Block {
         }
     };
 
-    // protected removeChildrenListenersBlur() {
-    //     Object.entries(this.children).forEach(elem => {
-    //         const item = elem[1];
-    //         if (item instanceof LabeledInput) {
-    //             console.log(item);
-    //             (item.children.input as Block).setProps({events: () => {}});
-    //         }
-    //     });
-    // }
-
     componentDidMount(): void {
         console.log("Mount Login");
     }

@@ -1,4 +1,6 @@
 import {BaseApi} from "./BaseAPI";
+import {queryStringify} from "../utils/helpers";
+import {IUserInActiveChat} from "../modules/Store";
 
 export interface IChats {
     id: number;
@@ -28,11 +30,36 @@ export class ChatsApi extends BaseApi {
         return this.http.get<IChats[]>("");
     }
 
+    getChatsByTitle(title: string) {
+        return this.http.get<IChats[]>(`?${queryStringify({title})}`);
+    }
+
     create(data: {title: string}) {
         return this.http.post("", data);
     }
 
+    delete(data: {id: number}) {
+        return this.http.delete("", {chatId: data.id});
+    }
+
+    async getToken(id: number) {
+        const response = await this.http.post<{token: string}>(`/token/${id}`);
+
+        return response.token;
+    }
+
+    getUsersToChat(id: number) {
+        return this.http.get<IUserInActiveChat[]>(`/${id}/users`);
+    }
+
+    addUsersToChat(id: number, usersID: number[]) {
+        return this.http.put("/users", {users: usersID, chatId: id});
+    }
+
+    deleteUsersFromChat(id: number, usersID: number[]) {
+        return this.http.delete("/users", {users: usersID, chatId: id});
+    }
+
     read = undefined;
     update = undefined;
-    delete = undefined;
 }

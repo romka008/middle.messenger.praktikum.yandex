@@ -1,0 +1,28 @@
+<div class="chat-page-messages">
+    {{#if dataActiveChat}}
+        <div class="chat-page-messages-top">
+            <div class="chat-page-messages-top__left-side">
+                <div class="messages-top__avatar"></div>
+                <div class="messages-top__name">{{{dataActiveChat.title}}}</div>
+                {{{usersInActiveChat}}}
+            </div>
+            {{{buttonShowParamsChatMenu}}}
+            <div class="params-chat__menu">
+                {{{buttonShowModalAddUser}}}
+                {{{buttonShowModalDeleteUser}}}
+                {{{buttonDeleteChat}}}
+            </div>
+        </div>
+        {{{messages}}}
+        <div class="chat-page-messages-bottom">
+            {{{buttonShowAttachmentMenu}}}
+            {{{formSendMessage}}}
+        </div>
+
+    {{else}}
+        <div class="not-active-chat">
+            Выберите чат чтобы отправить сообщение
+        </div>
+
+    {{/if}}
+</div>

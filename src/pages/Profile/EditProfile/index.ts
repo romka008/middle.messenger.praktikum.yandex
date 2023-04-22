@@ -188,7 +188,6 @@ export class EditProfileBase extends Block {
     }
 
     _setValue() {
-        // console.log(this.props.data);
         const setFieldValue = (field: string, value: string): void => {
             ((this.children[field] as Block).children.field as Block).setProps({"value": value});
         };

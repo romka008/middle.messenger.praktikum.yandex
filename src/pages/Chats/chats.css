@@ -57,24 +57,12 @@
     border: none;
 }
 
-.chat-page-chats__block {
-    height: calc(100vh - 116px);
-    overflow: auto;
-    overflow-x: visible;
-}
-
-.chat {
-    height: 67px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2px;
-}
-
 .active {
     background-color: #e4edfd;
 }
 
 .chat-page-messages-top {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,19 +89,22 @@
     flex-grow: 1;
 }
 
-.chat-page-messages-top__right-side {
+.chat-page__params-chat {
     height: 25px;
     width: 25px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.chat-page-messages-top__right-side:hover {
-    background-color: #f5f5f5;
+.chat-page__params-chat:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .chat-page-messages-bottom {
@@ -156,8 +147,21 @@
     cursor: pointer;
 }
 
-.icon-attachment:hover {
+.icon-attachment {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    background-color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon-attachment:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .chat-page-wrapper-search-block {
@@ -198,18 +202,18 @@
     line-height: 14px;
     color: var(--text-color);
     background-color: #fff;
-    box-shadow: 0 0 6px #9999991a;
+    box-shadow: 0 0 6px #99999947;
     border-radius: 12px;
     z-index: 10;
     position: absolute;
     padding: 15px 0;
 }
 
-.menu-visible {
-    display: block;
-}
-
-.show-modal__add-chat {
+.item-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     color: var(--text-color);
     background-color: #fff;
     border: none;
@@ -219,7 +223,7 @@
     padding: 5px 10px;
 }
 
-.show-modal__add-chat:hover {
+.item-menu:hover {
     background-color: var(--background-color);
     transition: all 0.3s ease;
 }
@@ -227,4 +231,27 @@
 .wrapper__dark__background {
     background-color: #000;
     opacity: 0.4;
+}
+
+.params-chat__menu {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--text-color);
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    display: none;
+    right: 15px;
+    top: 45px;
+    box-shadow: 0 0 6px #99999947;
+}
+
+.menu-visible {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

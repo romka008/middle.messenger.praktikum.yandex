@@ -137,7 +137,6 @@ class EditPasswordBase extends Block {
             for (const key in inputValue) {
                 if (Object.prototype.hasOwnProperty.call(inputValue, key)) {
                     const el = inputValue[key];
-                    console.log(el);
                     if (key === "oldPassword") {
                         responseData[key] = el;
                     } else if (key === "password") {
