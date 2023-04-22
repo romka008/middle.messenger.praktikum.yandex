@@ -37,6 +37,7 @@ export class ChatListBlockBase extends Block<IChatListBlockProps> {
                 lastMessage: content,
                 messageTime: el.last_message?.time ? getTime(el.last_message?.time) : "",
                 unreadCount: el.unread_count,
+                avatar: el.avatar,
                 events: {
                     click: () => {
                         store.set("activeChat", el.id);

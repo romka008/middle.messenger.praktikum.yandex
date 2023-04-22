@@ -12,7 +12,7 @@ interface IBackInChatsProps {
 
 export class BackInChats extends Block<IBackInChatsProps> {
     constructor(props: IBackInChatsProps) {
-        super({route: "./chats", ...props});
+        super({route: "./messenger", ...props});
     }
 
     protected init(): void {
@@ -20,7 +20,7 @@ export class BackInChats extends Block<IBackInChatsProps> {
             className: "arrow",
             events: {
                 click: () => {
-                    router.go("/chats");
+                    router.go("/messenger");
                 }
             },
             svg: backIcon

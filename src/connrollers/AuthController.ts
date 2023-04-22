@@ -12,7 +12,7 @@ class AuthController {
         this.api
             .signup(data)
             .then(() => {
-                router.go("/profile");
+                router.go("/messenger");
             })
             .catch(console.log);
     }
@@ -22,7 +22,7 @@ class AuthController {
             await this.api.signin(data);
 
             await this.fetchUser();
-            router.go("/profile");
+            router.go("/messenger");
         } catch (err) {
             store.set("user.hasError", true);
             console.error(err);
@@ -33,7 +33,7 @@ class AuthController {
         this.api
             .logout()
             .then(() => {
-                router.go("/login");
+                router.go("/");
             })
             .catch(console.log);
     }

@@ -1,12 +1,12 @@
 {{#if path}}
-    <div class="image-container">
+    <div class="image-container {{{classNameContainer}}}">
         <img src="https://ya-praktikum.tech/api/v2/resources{{{path}}}" alt="image description" class="avatar" />
         <div class="overlay">
-            <div class="text">Поменять аватар</div>
+            <div class="text">↓</div>
         </div>
     </div>
 {{else}}
-    <div class="image-container">
+    <div class="image-container {{{classNameContainer}}}">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 fill-rule="evenodd"
@@ -16,7 +16,7 @@
             ></path>
         </svg>
         <div class="overlay">
-            <div class="text">Поменять аватар</div>
+            <div class="text">↓</div>
         </div>
     </div>
 {{/if}}

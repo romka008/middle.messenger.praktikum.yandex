@@ -1,4 +1,3 @@
-import {HomePage} from "./pages/Home";
 import {Login} from "./pages/Login";
 import {SignUp} from "./pages/Signup";
 import {PageNotFound} from "./pages/PageNotFound";
@@ -11,20 +10,18 @@ import Router from "./modules/Router";
 import authController from "./connrollers/AuthController";
 
 enum Routes {
-    Home = "/",
-    Login = "/login",
-    Register = "/signup",
-    Profile = "/profile",
-    Messenger = "/chats",
-    EditProfile = "/edit-data",
-    EditPassword = "/edit-password",
+    Login = "/",
+    Register = "/sign-up",
+    Profile = "/settings",
+    Messenger = "/messenger",
+    EditProfile = "/settings/edit-profile",
+    EditPassword = "/settings/edit-password",
     PageNotFound = "/404",
     ErrorServer = "/500"
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-    Router.use(Routes.Home, HomePage)
-        .use(Routes.Login, Login)
+    Router.use(Routes.Login, Login)
         .use(Routes.Register, SignUp)
         .use(Routes.Profile, Profile)
         .use(Routes.EditProfile, EditProfile)

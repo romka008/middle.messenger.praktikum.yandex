@@ -72,3 +72,17 @@
     background-color: aqua;
     border-radius: 50%;
 }
+
+.chat-list-avatar-user {
+    height: 47px;
+    width: 47px;
+}
+
+.chat-list-avatar-user:hover .overlay {
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.chat-list-avatar-user:hover .text {
+    opacity: 0;
+}

@@ -13,3 +13,8 @@
     line-height: 12px;
     color: var(--text-gray-color);
 }
+
+.chat-avatar-user {
+    width: 34px;
+    height: 34px;
+}

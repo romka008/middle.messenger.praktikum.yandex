@@ -77,7 +77,7 @@ class ProfileBase extends Block {
             className: "edit-data",
             events: {
                 click: () => {
-                    router.go("/edit-data");
+                    router.go("/settings/edit-profile");
                 }
             }
         });
@@ -87,13 +87,13 @@ class ProfileBase extends Block {
             className: "edit-password",
             events: {
                 click: () => {
-                    router.go("/edit-password");
+                    router.go("/settings/edit-password");
                 }
             }
         });
 
         this.children.linkLogout = new Link({
-            route: "./logout",
+            route: "./",
             value: "Выход",
             className: "logout"
         });

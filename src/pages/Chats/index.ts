@@ -12,6 +12,8 @@ import {openModal} from "../../utils/helpers";
 import {ModalAddUser} from "./modals/ModalAddUser";
 import {MainBlockChat} from "./MainBlockChat";
 import {ModalDeleteUser} from "./modals/ModalDeleteUser";
+import {ModalUpdateAvatarChat} from "./modals/ModalUpdateAvatarChat";
+import {ImageAvatar} from "../../components/Avatar/ImageAvatar";
 
 import "./chats.css";
 
@@ -27,13 +29,23 @@ export class Chats extends Block {
             className: "link-profile",
             events: {
                 click: () => {
-                    router.go("/profile");
+                    router.go("/settings");
                 }
             }
         });
         this.children.modalCreateChat = new ModalCreateChat();
         this.children.modalAddUser = new ModalAddUser();
         this.children.modalDeleteUser = new ModalDeleteUser();
+        this.children.modalUpdateAvatarChat = new ModalUpdateAvatarChat();
+
+        this.children.imageAvatar = new ImageAvatar({
+            events: {
+                click: e => {
+                    e.preventDefault();
+                    openModal(document.querySelector(".modal-window__updata-avatar-chat"));
+                }
+            }
+        });
 
         this.children.buttonShowAddChatMenu = new Button({
             label: "+",
@@ -77,7 +89,7 @@ export class Chats extends Block {
             })
         });
 
-        this.children.сhatBlock = new ChatListBlock({});
+        this.children.сhatListBlock = new ChatListBlock({});
 
         ChatsController.getChats();
     }
