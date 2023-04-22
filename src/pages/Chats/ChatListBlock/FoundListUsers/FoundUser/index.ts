@@ -1,4 +1,4 @@
-import Block from "../../../../modules/Block";
+import Block from "../../../../../modules/Block";
 import template from "./foundUser.hbs";
 
 import "./foundUser.css";
@@ -7,7 +7,7 @@ interface IFoundUserProps {
     id: number;
     login: string;
     events: {
-        click: () => void;
+        click: (event: PointerEvent) => void;
     };
     first_name?: string;
     second_name?: string;
@@ -20,9 +20,6 @@ interface IFoundUserProps {
 export class FoundUser extends Block<IFoundUserProps> {
     constructor(props: IFoundUserProps) {
         super(props);
-    }
-    init() {
-        // this.children.foundUsers =
     }
 
     componentDidMount(): void {

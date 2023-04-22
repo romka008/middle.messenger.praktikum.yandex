@@ -56,7 +56,6 @@ class AuthController {
         //     .finally(() => {
         //         setTimeout(() => store.set("user.isLoading", false), 0);
         //     });
-
         store.set("user.isLoading", true);
         await this.api
             .getUser()
@@ -66,7 +65,6 @@ class AuthController {
             .finally(() => {
                 store.set("user.isLoading", false);
             });
-        console.log(store);
     }
 }
 

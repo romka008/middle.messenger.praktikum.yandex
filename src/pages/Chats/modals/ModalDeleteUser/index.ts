@@ -1,5 +1,5 @@
 import Block from "../../../../modules/Block";
-import template from "./modalAddUser.hbs";
+import template from "./modalDeleteUser.hbs";
 import {Button} from "../../../../components/Button3";
 import {Form} from "../../../../components/Form";
 import {LabeledInput} from "../../../../components/LabeledInput";
@@ -11,15 +11,15 @@ import {Input} from "../../../../components/Input";
 
 import "../modals.css";
 
-export class ModalAddUser extends Block {
+export class ModalDeleteUser extends Block {
     constructor() {
         super({});
     }
 
     protected init(): void {
-        this.children.foundListUsers = new FoundListUsers({});
+        this.children.foundListDeleteUsers = new FoundListUsers({deleteModal: true});
 
-        this.children.formAddChat = new Form({
+        this.children.formDeleteUsers = new Form({
             className: "modal__form",
             inputs: [
                 new LabeledInput({
@@ -43,7 +43,7 @@ export class ModalAddUser extends Block {
                     events: {
                         click: e => {
                             e.preventDefault();
-                            this._addChat(this.children.formAddChat as Block);
+                            this._addChat(this.children.formDeleteUsers as Block);
                         }
                     }
                 }),
@@ -56,11 +56,11 @@ export class ModalAddUser extends Block {
                         click: e => {
                             e.preventDefault();
                             (
-                                ((this.children.formAddChat as Block).children.inputs as Block[])[0].children
+                                ((this.children.formDeleteUsers as Block).children.inputs as Block[])[0].children
                                     .input as Input
                             ).value = "";
-                            closeModal(document.querySelector(".modal-window__add-user"));
-                            store.set("foundUsers", undefined);
+                            closeModal(document.querySelector(".modal-window__delete-user"));
+                            store.set("foundUsers", []);
                         }
                     }
                 })

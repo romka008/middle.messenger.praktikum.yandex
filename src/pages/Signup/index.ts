@@ -7,9 +7,9 @@ import {LabeledInput} from "../../components/LabeledInput";
 import {setError} from "../../utils/setError";
 import {Link} from "../../components/Link";
 import authController from "../../connrollers/AuthController";
+import {ISignupData} from "../../api/AuthApi";
 
 import "./signup.css";
-import {ISignupData} from "../../api/AuthApi";
 
 export class SignUp extends Block {
     constructor() {
@@ -22,7 +22,6 @@ export class SignUp extends Block {
             type: "submit",
             events: {
                 click: e => {
-                    console.log("Регистрация");
                     this.handleSubmit(e);
                 }
             }

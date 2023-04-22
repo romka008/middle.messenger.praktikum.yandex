@@ -1,6 +1,5 @@
 import {IUser} from "../api/AuthApi";
 import {set} from "../utils/helpers";
-import Block from "./Block";
 import {EventBus} from "./EventBus";
 
 export enum StoreEvents {
@@ -11,9 +10,43 @@ export interface IInfoChat {
     avatar: null | string;
     created_by: number;
     id: number;
-    last_message: null | string;
+    last_message: null | {content: string; id: number; time: string};
     title: string;
     unread_count: number;
+}
+
+export interface IUserInActiveChat {
+    avatar: null | string;
+    display_name: null | string;
+    email: string;
+    first_name: string;
+    id: number;
+    login: string;
+    phone: string;
+    role: "admin" | "regular";
+    second_name: string;
+}
+
+export interface IMessage {
+    chat_id: number;
+    content: string;
+    file: null | string;
+    id: number;
+    is_read: boolean;
+    time: string;
+    type: string;
+    user_id: number;
+}
+
+export interface IFoundUser {
+    id: number;
+    login: string;
+    first_name: string;
+    second_name: string;
+    display_name: null | string;
+    avatar: null | string;
+    email: string;
+    phone: string;
 }
 
 interface IState {
@@ -23,21 +56,10 @@ interface IState {
         hasError: boolean;
     };
     chats: IInfoChat[] | [];
-    foundUsers:
-        | {
-              id: number;
-              login: string;
-              first_name: string;
-              second_name: string;
-              display_name: null | string;
-              avatar: null | string;
-              email: string;
-              phone: string;
-          }[]
-        | [];
+    foundUsers: IFoundUser[] | [];
     activeChat: number | null;
-    // eslint-disable-next-line
-    messages?: any;
+    messages?: Record<number, IMessage[]>;
+    usersInActiveChat?: IUserInActiveChat[] | [];
 }
 
 const inintialState: IState = {
@@ -48,7 +70,9 @@ const inintialState: IState = {
     },
     chats: [],
     foundUsers: [],
-    activeChat: null
+    activeChat: null,
+    messages: {},
+    usersInActiveChat: []
 };
 
 // наследуем Store от EventBus, чтобы его методы были сразу доступны у экземпляра Store
@@ -67,23 +91,5 @@ class Store extends EventBus<string> {
 }
 
 const store = new Store();
-
-// eslint-disable-next-line
-export const withStore = (mapStateToProps: (state: IState) => any) => {
-    return (Component: typeof Block) => {
-        return class WithStore extends Component {
-            // eslint-disable-next-line
-            constructor(props: any) {
-                const mappedState = mapStateToProps(store.getState());
-                super({...props, ...mappedState});
-
-                store.on(StoreEvents.Updated, newState => {
-                    const newMappedState = mapStateToProps(newState);
-                    this.setProps(newMappedState);
-                });
-            }
-        };
-    };
-};
 
 export {store};

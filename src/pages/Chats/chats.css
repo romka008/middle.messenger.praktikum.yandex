@@ -57,19 +57,6 @@
     border: none;
 }
 
-.chat-page-chats__block {
-    height: calc(100vh - 116px);
-    overflow: auto;
-    overflow-x: visible;
-}
-
-.chat {
-    height: 67px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2px;
-}
-
 .active {
     background-color: #e4edfd;
 }

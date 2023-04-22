@@ -1,8 +1,8 @@
-import Block from "../../../modules/Block";
+import Block from "../../../../modules/Block";
 import template from "./chat.hbs";
+import {connect} from "../../../../hoc/connect";
 
 import "./chat.css";
-import {connect} from "../../../hoc/connect";
 
 interface IChatProps {
     id: number;
@@ -22,7 +22,6 @@ class ChatBase extends Block<IChatProps> {
     }
 
     protected render(): DocumentFragment {
-        // console.log(this.props);
         return this.compile(template, {...this.props, isAciveChat: this.props.id === this.props.activeChat});
     }
 }

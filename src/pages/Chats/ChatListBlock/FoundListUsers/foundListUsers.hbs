@@ -1,0 +1,16 @@
+<ul class="found-users">
+    {{#if foundUsers.length}}
+        Выбирите пользователей и нажмите кнопку
+        {{#if deleteModal}} "Удалить" {{else}} "Добавить" {{/if}}
+    {{/if}}
+    {{#each foundUsers}}
+        {{{this}}}
+    {{/each}}
+    {{#if foundUsers.length}}
+        <div>
+            {{#if deleteModal}} {{{deleteUsers}}} {{else}}{{{addUsers}}} {{/if}}
+
+        </div>
+    {{/if}}
+
+</ul>

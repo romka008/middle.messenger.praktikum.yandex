@@ -4,26 +4,36 @@ import attachmentIcon from "../../../assets/icons/attachmentIcon.svg";
 import paramsIcon from "../../../assets/icons/paramsIcon.svg";
 import addUserIcon from "../../../assets/icons/addUserIcon.svg";
 import deleteUserIcon from "../../../assets/icons/deleteUserIcon.svg";
-import cameraImage from "../../../assets/image/cameraImg.png";
 import sendIcon from "../../../assets/icons/sendIcon.svg";
-import statusMessageIcon from "../../../assets/icons/read.svg";
+import readIcon from "../../../assets/icons/read.svg";
+import doNotReadIcon from "../../../assets/icons/doNotReadIcon.svg";
 import deleteChatIcon from "../../../assets/icons/deleteIcon.svg";
 import {Button} from "../../../components/Button3";
-import {openModal} from "../../../utils/helpers";
+import {getTime, openModal} from "../../../utils/helpers";
 import {Messages} from "../../../components/Messages";
 import {Message} from "../../../components/Messages/Message";
 import {InputSearch} from "../../../components/Input/InputSearch";
 import {Input} from "../../../components/Input";
 import {Form} from "../../../components/Form";
 import {connect} from "../../../hoc/connect";
-import {IInfoChat} from "../../../modules/Store";
+import {IInfoChat, IMessage, IUserInActiveChat} from "../../../modules/Store";
 import ChatsController from "../../../connrollers/ChatsController";
+import MessageController from "../../../connrollers/MessageController";
+import {UsersInActiveChat} from "../../../components/UsersInActiveChat";
 
 import "./mainBlockChat.css";
 
-class MainBlockChatBase extends Block {
-    constructor() {
-        super({});
+interface MainBlockChatProps {
+    chats: IInfoChat[] | [];
+    usersInActiveChat: IUserInActiveChat[];
+    messages: IMessage[] | [];
+    dataActiveChat?: IInfoChat;
+    userId: number;
+}
+
+class MainBlockChatBase extends Block<MainBlockChatProps> {
+    constructor(props: MainBlockChatProps) {
+        super({...props});
     }
 
     protected init(): void {
@@ -75,7 +85,7 @@ class MainBlockChatBase extends Block {
             className: "item-menu",
             events: {
                 click: () => {
-                    openModal(document.querySelector(".modal-window__create-chat"));
+                    openModal(document.querySelector(".modal-window__delete-user"));
                     document.querySelector(".params-chat__menu")?.classList.toggle("menu-visible");
                 }
             }
@@ -87,38 +97,17 @@ class MainBlockChatBase extends Block {
             className: "item-menu",
             events: {
                 click: () => {
-                    ChatsController.deleteChat({id: this.props.dataActiveChat.id});
+                    if (this.props.dataActiveChat?.id) {
+                        ChatsController.deleteChat({id: this.props.dataActiveChat.id});
+                        MessageController.close(this.props.dataActiveChat.id);
+                    }
                 }
             }
         });
 
-        this.children.messages = new Messages({
-            messages: [
-                new Message({
-                    message: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то 
-                        момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем 
-                        чтоастронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще 
-                        находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                        <br /><br />
-                        Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
-                        никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе
-                        за 45000 евро.`,
-                    time: "11:56",
-                    partner: true
-                }),
-                new Message({
-                    image: cameraImage,
-                    time: "11:56",
-                    partner: true
-                }),
+        this.children.messages = this.createMessages(this.props);
 
-                new Message({
-                    message: "Круто!",
-                    statusMessage: statusMessageIcon,
-                    time: "12:00"
-                })
-            ]
-        });
+        this.children.usersInActiveChat = this.createUsersInActiveChat(this.props);
 
         this.children.inputSearch = new InputSearch({
             classname: "search-block",
@@ -166,7 +155,12 @@ class MainBlockChatBase extends Block {
                                 const formData = new FormData(form as HTMLFormElement);
                                 const formDataObj: Record<string, unknown> = {};
                                 formData.forEach((value, key) => (formDataObj[key] = value));
-                                console.log(formDataObj);
+                                const dataActiveChatId = this.props.dataActiveChat?.id;
+                                if ((formDataObj.message as string).length > 0 && dataActiveChatId) {
+                                    MessageController.sendMessage(dataActiveChatId, formDataObj.message as string);
+                                    // eslint-disable-next-line
+                                    (this.children.formSendMessage as any).children.inputs[0].value = "";
+                                }
                             }
                         }
                     }
@@ -175,8 +169,37 @@ class MainBlockChatBase extends Block {
         });
     }
 
+    protected componentDidUpdate(_oldProps: MainBlockChatProps, newProps: MainBlockChatProps): boolean {
+        this.children.messages = this.createMessages(newProps);
+        this.children.usersInActiveChat = this.createUsersInActiveChat(newProps);
+
+        return true;
+    }
+
+    createUsersInActiveChat(props: MainBlockChatProps) {
+        return new UsersInActiveChat({
+            users: (props.usersInActiveChat ? props.usersInActiveChat : []).map(data => {
+                return data.login;
+            })
+        });
+    }
+
+    createMessages(props: MainBlockChatProps) {
+        const activeChatID = this?.props?.dataActiveChat?.id;
+        return new Messages({
+            messages: (activeChatID ? props.messages : []).map(data => {
+                return new Message({
+                    ...data,
+                    message: data.content,
+                    statusMessage: data.is_read ? readIcon : doNotReadIcon,
+                    time: getTime(data.time),
+                    partner: props.userId !== data.user_id
+                });
+            })
+        });
+    }
+
     render() {
-        // console.log(this.props);
         return this.compile(template, {...this.props});
     }
 }
@@ -184,7 +207,8 @@ class MainBlockChatBase extends Block {
 const withDataForChat = connect(state => {
     return {
         chats: [...(state.chats || [])],
-        messages: [...(state.messages || [])],
+        usersInActiveChat: state.usersInActiveChat || [],
+        messages: (state.messages || {})[state.activeChat] || [],
         dataActiveChat: state.chats.find((chat: IInfoChat) => chat.id === state.activeChat),
         userId: state.user.data.id
     };
