@@ -1,6 +1,5 @@
 import {BaseApi} from "./BaseAPI";
-import {queryStringify} from "../utils/helpers";
-import {IUserInActiveChat} from "../modules/Store";
+import {IInfoChat, IUserInActiveChat} from "../modules/Store";
 
 export interface IChats {
     id: number;
@@ -31,7 +30,7 @@ export class ChatsApi extends BaseApi {
     }
 
     getChatsByTitle(title: string) {
-        return this.http.get<IChats[]>(`?${queryStringify({title})}`);
+        return this.http.get<IChats[]>("", {title});
     }
 
     create(data: {title: string}) {
@@ -58,6 +57,10 @@ export class ChatsApi extends BaseApi {
 
     deleteUsersFromChat(id: number, usersID: number[]) {
         return this.http.delete("/users", {users: usersID, chatId: id});
+    }
+
+    updateAvatar(data: FormData) {
+        return this.http.put<IInfoChat>("/avatar", data, "FormData");
     }
 
     read = undefined;

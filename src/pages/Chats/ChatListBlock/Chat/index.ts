@@ -1,6 +1,7 @@
 import Block from "../../../../modules/Block";
 import template from "./chat.hbs";
 import {connect} from "../../../../hoc/connect";
+import {ImageAvatar} from "../../../../components/Avatar/ImageAvatar";
 
 import "./chat.css";
 
@@ -14,11 +15,19 @@ interface IChatProps {
         click: () => void;
     };
     activeChat?: number;
+    avatar: string | null;
 }
 
 class ChatBase extends Block<IChatProps> {
     constructor(props: IChatProps) {
         super(props);
+    }
+
+    protected init(): void {
+        this.children.imageAvatar = new ImageAvatar({
+            path: this.props.avatar,
+            classNameContainer: "chat-list-avatar-user"
+        });
     }
 
     protected render(): DocumentFragment {

@@ -20,6 +20,7 @@ import {IInfoChat, IMessage, IUserInActiveChat} from "../../../modules/Store";
 import ChatsController from "../../../connrollers/ChatsController";
 import MessageController from "../../../connrollers/MessageController";
 import {UsersInActiveChat} from "../../../components/UsersInActiveChat";
+import {ImageAvatar} from "../../../components/Avatar/ImageAvatar";
 
 import "./mainBlockChat.css";
 
@@ -37,6 +38,8 @@ class MainBlockChatBase extends Block<MainBlockChatProps> {
     }
 
     protected init(): void {
+        this.children.imageAvatar = this.createImageAvatar(this.props);
+
         this.children.buttonShowAddChatMenu = new Button({
             label: "+",
             className: "chat-page__add-chat",
@@ -172,8 +175,22 @@ class MainBlockChatBase extends Block<MainBlockChatProps> {
     protected componentDidUpdate(_oldProps: MainBlockChatProps, newProps: MainBlockChatProps): boolean {
         this.children.messages = this.createMessages(newProps);
         this.children.usersInActiveChat = this.createUsersInActiveChat(newProps);
+        this.children.imageAvatar = this.createImageAvatar(newProps);
 
         return true;
+    }
+
+    createImageAvatar(props: MainBlockChatProps) {
+        return new ImageAvatar({
+            path: props.dataActiveChat?.avatar,
+            classNameContainer: "chat-avatar-user",
+            events: {
+                click: e => {
+                    e.preventDefault();
+                    openModal(document.querySelector(".modal-window__updata-avatar-chat"));
+                }
+            }
+        });
     }
 
     createUsersInActiveChat(props: MainBlockChatProps) {
@@ -210,7 +227,7 @@ const withDataForChat = connect(state => {
         usersInActiveChat: state.usersInActiveChat || [],
         messages: (state.messages || {})[state.activeChat] || [],
         dataActiveChat: state.chats.find((chat: IInfoChat) => chat.id === state.activeChat),
-        userId: state.user.data.id
+        userId: state.user.data?.id
     };
 });
 

@@ -74,7 +74,7 @@ export class Login extends Block {
         });
 
         this.children.link = new Link({
-            route: "./signup",
+            route: "./sign-up",
             value: "Нет аккаунта?",
             className: "link-block"
         });

@@ -1,3 +1,5 @@
+import {queryStringify} from "./helpers";
+
 enum METHODS {
     GET = "GET",
     POST = "POST",
@@ -21,8 +23,9 @@ export default class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get<Response>(url: string): Promise<Response> {
-        return this.request(this.endpoint + url);
+    public get<Response>(url: string, data?: unknown): Promise<Response> {
+        const newUrl = data ? `?${url}${queryStringify(data)}` : url;
+        return this.request(this.endpoint + newUrl);
     }
 
     public post<Response = void>(url: string, data?: unknown): Promise<Response> {
@@ -49,7 +52,6 @@ export default class HTTPTransport {
 
     private request<Response>(url: string, options: Options = {method: METHODS.GET}): Promise<Response> {
         const {method, data, contentType} = options;
-
         return new Promise((resolve, reject) => {
             if (!method) {
                 reject(new Error("No method"));
@@ -75,7 +77,6 @@ export default class HTTPTransport {
 
             xhr.withCredentials = true;
             xhr.responseType = "json";
-
             if (contentType === "FormData") {
                 xhr.send(data);
                 return;

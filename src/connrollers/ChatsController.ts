@@ -88,6 +88,10 @@ class ChatsController {
             console.error(err);
         }
     }
+    async updateAvatar(avatar: FormData) {
+        await this.api.updateAvatar(avatar);
+        this.getChats();
+    }
 }
 
 export default new ChatsController();

@@ -1,6 +1,7 @@
 .modal-window__create-chat,
 .modal-window__add-user,
-.modal-window__delete-user {
+.modal-window__delete-user,
+.modal-window__updata-avatar-chat {
     color: #000;
     position: fixed;
     height: 100%;
@@ -16,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 273px;
+    width: 280px;
     max-width: 100%;
     max-height: 100%;
     z-index: 30;
