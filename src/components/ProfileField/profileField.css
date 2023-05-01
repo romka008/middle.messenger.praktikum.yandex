@@ -25,9 +25,6 @@
     font-size: 8px;
     position: relative;
     color: var(--text-validate-color);
-}
-
-.text-error {
     padding-top: 0;
     top: 0;
 }
