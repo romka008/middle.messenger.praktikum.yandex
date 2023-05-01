@@ -51,18 +51,34 @@ body {
 
 .edit-data,
 .edit-password {
-    width: 100%;
-    padding-top: 14px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    align-self: flex-start;
     color: var(--blue-color);
     font-size: 13px;
     font-weight: 500;
     line-height: 13px;
-    border-bottom: 1px solid #eaeaea;
+    padding-top: 14px;
+    padding-left: 0;
     padding-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.edit-data:hover,
+.edit-password:hover {
+    color: var(--text-gray-color);
+    transition: all 0.5s ease;
 }
 
 .logout {
-    width: 100%;
+    font-size: 13px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: var(--red);
+    align-self: flex-start;
+    padding-left: 0;
     padding-top: 10px;
 }
 

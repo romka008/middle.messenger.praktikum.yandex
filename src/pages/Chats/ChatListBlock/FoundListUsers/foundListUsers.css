@@ -1,0 +1,27 @@
+.found-users {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style-type: none;
+}
+
+.found-users > li {
+    cursor: pointer;
+}
+
+.select-user {
+    background-color: var(--background-color);
+}
+
+.button-add-users {
+    background-color: var(--blue-color);
+    border: var(--border);
+    color: var(--button-color);
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    display: inline-block;
+}

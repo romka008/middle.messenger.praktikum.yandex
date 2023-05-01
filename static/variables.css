@@ -2,9 +2,11 @@ html {
     --text-color: #1e1e1e;
     --text-gray-color: #999;
     --blue-color: #3369f3;
+    --dark-blue-color: #1654d1;
     --background-button: var(--blue-color);
     --red: #f00;
     --button-color: #fff;
+    --button-close-color: #bab6b6;
     --text-validate-color: #ff2f2f;
 
     --background-color-chats: #fbfbfb;

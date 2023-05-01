@@ -10,6 +10,7 @@ interface IInputProps {
     events?: {
         blur?: (e: Event) => void;
         focus?: (e: Event) => void;
+        change?: (e: Event) => void;
     };
     placeholder?: string;
 }
@@ -43,6 +44,8 @@ export class Input extends Block<IInputProps> {
     set value(value: string) {
         if (typeof this.props.name === "number") {
             this.element!.getElementsByTagName("input")[this.props.name].value = value;
+        } else {
+            (this.element as HTMLInputElement).value = value;
         }
     }
 

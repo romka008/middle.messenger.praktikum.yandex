@@ -1,10 +1,11 @@
 import template from "./inputSearch.hbs";
 import Block from "../../../modules/Block";
+import {Input} from "../";
 
 import "./inputSearch.css";
 
 interface IInputSearch {
-    input: unknown;
+    input: Input;
     classname?: string;
     // events?: {
     //     focus: (e: Event) => void;

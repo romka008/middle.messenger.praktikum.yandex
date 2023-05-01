@@ -1,0 +1,86 @@
+.modal-window__create-chat,
+.modal-window__add-user,
+.modal-window__delete-user,
+.modal-window__updata-avatar-chat {
+    color: #000;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 30;
+    box-shadow: 0 0 6px #9999991a;
+    border-radius: 12px;
+    overflow-x: visible;
+    overflow-y: auto;
+}
+
+.modal__open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+}
+
+/* .modal__message {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 14px;
+} */
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 30px 30px;
+}
+
+.modal__send {
+    background-color: var(--blue-color);
+    border: var(--border);
+    color: var(--button-color);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    display: inline-block;
+    padding: 7px;
+}
+
+.button__close {
+    cursor: pointer;
+    color: var(--blue-color);
+    background-color: var(--button-color);
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    border-radius: 8px;
+    padding: 7px;
+    transition: all 0.5s;
+}
+
+.button__close:hover {
+    background-color: var(--button-close-color);
+    border: var(--button-close-color);
+    color: var(--button-color);
+    transition: all 0.5s;
+}

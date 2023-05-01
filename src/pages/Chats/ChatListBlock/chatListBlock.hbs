@@ -1,0 +1,11 @@
+<div class="chat-page-chats__block">
+    <div class="chats">
+        {{#if chats.length}}
+            {{#each chats}}
+                {{{this}}}
+            {{/each}}
+        {{else}}
+            <p>У вас пока нет чатов</p>
+        {{/if}}
+    </div>
+</div>

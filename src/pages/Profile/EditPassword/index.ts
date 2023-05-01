@@ -6,19 +6,23 @@ import {Avatar} from "../../../components/Avatar";
 import {Input} from "../../../components/Input";
 import {Field} from "../../../components/ProfileField/Field";
 import {ProfileField} from "../../../components/ProfileField";
-import {BackInChats} from "../../../components/BackIiChats";
+import {BackInChats} from "../../../components/BackInChats";
 import "./editPassword.css";
 import {blur, focus, validate} from "../../../utils/validate";
 import {setError} from "../../../utils/setError";
 import {Button} from "../../../components/Button3";
+import {IEditPasswordData} from "../../../api/UserApi";
+import UserController from "../../../connrollers/UserController";
+import {connect} from "../../../hoc/connect";
+import AuthController from "../../../connrollers/AuthController";
 
-export class EditPassword extends Block {
+class EditPasswordBase extends Block {
     constructor() {
         super({});
     }
 
     protected init(): void {
-        this.children.avatar = new Avatar();
+        this.children.avatar = new Avatar({});
 
         this.children.fieldName = new Field({
             name: "first_name",
@@ -31,7 +35,7 @@ export class EditPassword extends Block {
             field: new Input({
                 name: "oldPassword",
                 type: "password",
-                value: "12345",
+                placeholder: "Старый пароль",
                 className: "profile-field_value",
                 events: {
                     blur: e => {
@@ -49,7 +53,7 @@ export class EditPassword extends Block {
             field: new Input({
                 name: "password",
                 type: "password",
-                value: "123456789",
+                placeholder: "Новый пароль",
                 className: "profile-field_value",
                 events: {
                     blur: e => {
@@ -66,7 +70,7 @@ export class EditPassword extends Block {
             field: new Input({
                 name: "again_password",
                 type: "password",
-                value: "123456789",
+                placeholder: "Повторите новый пароль",
                 className: "profile-field_value",
                 events: {
                     blur: e => {
@@ -129,11 +133,34 @@ export class EditPassword extends Block {
         const isValid = errors === 0;
 
         if (isValid) {
+            const responseData: IEditPasswordData = {} as IEditPasswordData;
+            for (const key in inputValue) {
+                if (Object.prototype.hasOwnProperty.call(inputValue, key)) {
+                    const el = inputValue[key];
+                    if (key === "oldPassword") {
+                        responseData[key] = el;
+                    } else if (key === "password") {
+                        responseData["newPassword"] = el;
+                    }
+                }
+            }
             console.log(inputValue);
+            UserController.editPassword(responseData);
         }
     };
 
+    async componentDidMount(): Promise<void> {
+        await AuthController.fetchUser();
+    }
+
     render() {
+        if (this.props.data) {
+            (this.children.avatar as Block).setProps({path: this.props.data.avatar});
+        }
         return this.compile(template, {...this.props});
     }
 }
+
+const withUser = connect(state => ({...state.user}));
+
+export const EditPassword = withUser(EditPasswordBase);

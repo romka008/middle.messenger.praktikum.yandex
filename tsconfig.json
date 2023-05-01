@@ -2,7 +2,7 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "dist",
-        "target": "ES2017",
+        "target": "ES2018",
         "declaration": false,
         "module": "ES2020",
         "moduleResolution": "node",

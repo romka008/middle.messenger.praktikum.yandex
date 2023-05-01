@@ -2,7 +2,6 @@
     "extends": "stylelint-config-standard",
     "rules": {
         "import-notation": "string",
-        "color-hex-case": "lower",
         "custom-property-empty-line-before": null,
         "no-empty-source": null,
         "selector-class-pattern": null

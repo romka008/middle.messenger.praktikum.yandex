@@ -6,6 +6,8 @@ import {blur, focus, validate} from "../../utils/validate";
 import {LabeledInput} from "../../components/LabeledInput";
 import {setError} from "../../utils/setError";
 import {Link} from "../../components/Link";
+import authController from "../../connrollers/AuthController";
+import {ISignupData} from "../../api/AuthApi";
 
 import "./signup.css";
 
@@ -20,7 +22,6 @@ export class SignUp extends Block {
             type: "submit",
             events: {
                 click: e => {
-                    console.log("Регистрация");
                     this.handleSubmit(e);
                 }
             }
@@ -128,7 +129,7 @@ export class SignUp extends Block {
     private handleSubmit = (evt: PointerEvent): void => {
         evt.preventDefault();
 
-        const inputValue: Record<string, string> = {};
+        const inputValue: ISignupData = {} as ISignupData;
 
         let errors = 0;
 
@@ -139,7 +140,9 @@ export class SignUp extends Block {
                 const name = (input as HTMLInputElement).name;
                 const value = (input as HTMLInputElement).value;
 
-                inputValue[name] = value;
+                inputValue[
+                    name as "first_name" | "second_name" | "login" | "email" | "password" | "again_password" | "phone"
+                ] = value;
 
                 if (name === "again_password") {
                     const [statusValid, objErrors] = validate({
@@ -160,6 +163,7 @@ export class SignUp extends Block {
 
         if (isValid) {
             console.log(inputValue);
+            authController.signup(inputValue);
         }
     };
 

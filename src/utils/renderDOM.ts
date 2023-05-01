@@ -9,7 +9,7 @@ export default function render(rootSelector: string, component: Block) {
 
     root.innerHTML = "";
 
-    root.appendChild(component.getContent());
+    root.appendChild(component.getContent()!);
 
     component.dispatchComponentDidMount();
 

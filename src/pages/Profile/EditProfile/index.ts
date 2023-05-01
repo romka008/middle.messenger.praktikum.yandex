@@ -4,14 +4,18 @@ import {Avatar} from "../../../components/Avatar";
 import {Input} from "../../../components/Input";
 import {Field} from "../../../components/ProfileField/Field";
 import {ProfileField} from "../../../components/ProfileField";
-import {BackInChats} from "../../../components/BackIiChats";
+import {BackInChats} from "../../../components/BackInChats";
 import {Button} from "../../../components/Button3";
 import {blur, focus, validate} from "../../../utils/validate";
 import {setError} from "../../../utils/setError";
 
 import "./editProfile.css";
+import {connect} from "../../../hoc/connect";
+import AuthController from "../../../connrollers/AuthController";
+import UserController from "../../../connrollers/UserController";
+import {IEditProfileData} from "../../../api/UserApi";
 
-export class EditProfile extends Block {
+export class EditProfileBase extends Block {
     constructor() {
         super({});
     }
@@ -30,7 +34,7 @@ export class EditProfile extends Block {
             }
         });
 
-        this.children.avatar = new Avatar();
+        this.children.avatar = new Avatar({});
 
         this.children.fieldName = new Field({
             name: "first_name",
@@ -152,7 +156,7 @@ export class EditProfile extends Block {
     private handleSubmit = (evt: PointerEvent): void => {
         evt.preventDefault();
 
-        const inputValue: Record<string, string> = {};
+        const inputValue: IEditProfileData = {} as IEditProfileData;
 
         let errors = 0;
 
@@ -163,7 +167,7 @@ export class EditProfile extends Block {
                 const name = (input as HTMLInputElement).name;
                 const value = (input as HTMLInputElement).value;
 
-                inputValue[name] = value;
+                inputValue[name as "first_name" | "second_name" | "login" | "email" | "phone"] = value;
 
                 const [statusValid, objErrors] = validate({[name]: value});
                 if (!statusValid) errors++;
@@ -175,10 +179,36 @@ export class EditProfile extends Block {
 
         if (isValid) {
             console.log(inputValue);
+            UserController.editProfile(inputValue);
         }
     };
 
+    async componentDidMount(): Promise<void> {
+        await AuthController.fetchUser();
+    }
+
+    _setValue() {
+        const setFieldValue = (field: string, value: string): void => {
+            ((this.children[field] as Block).children.field as Block).setProps({"value": value});
+        };
+
+        setFieldValue("fieldEmail", this.props.data.email);
+        setFieldValue("fieldLogin", this.props.data.login);
+        setFieldValue("fieldFirstName", this.props.data.first_name);
+        setFieldValue("fieldSecondName", this.props.data.second_name);
+        setFieldValue("fieldDisplayName", this.props.data.display_name);
+        setFieldValue("fieldPhone", this.props.data.phone);
+        (this.children.avatar as Block).setProps({path: this.props.data.avatar});
+    }
+
     render() {
+        if (this.props.data) {
+            this._setValue();
+        }
         return this.compile(template, {...this.props});
     }
 }
+
+const withUser = connect(state => ({...state.user}));
+
+export const EditProfile = withUser(EditProfileBase);

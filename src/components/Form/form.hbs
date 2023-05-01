@@ -1,7 +1,10 @@
-<form class="{{{className}}}">
+<form id="{{{id}}}" class="{{{className}}}">
     {{#each inputs}}
         {{{this}}}
     {{/each}}
-    {{{button}}}
+    {{#each buttons}}
+        {{{this}}}
+    {{/each}}
+    {{!-- {{{button}}} --}}
     {{{link}}}
 </form>

@@ -1,4 +1,4 @@
-import {queryStringify} from "./queryStringify";
+import {queryStringify} from "./helpers";
 
 enum METHODS {
     GET = "GET",
@@ -9,99 +9,86 @@ enum METHODS {
 }
 
 type Options = {
-    method?: string;
+    method: METHODS;
+    contentType?: string;
     // eslint-disable-next-line
     data?: any;
-    headers?: Record<string, string>;
-    timeout?: number;
-    retries?: number;
 };
 
-type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
+export default class HTTPTransport {
+    static API_URL = "https://ya-praktikum.tech/api/v2";
+    protected endpoint: string;
 
-class HTTPTransport {
-    get: HTTPMethod = (url, options = {}) => this.request(url, {...options, method: METHODS.GET}, options.timeout);
-
-    post: HTTPMethod = (url, options = {}) => this.request(url, {...options, method: METHODS.POST}, options.timeout);
-
-    put: HTTPMethod = (url, options = {}) => this.request(url, {...options, method: METHODS.PUT}, options.timeout);
-
-    delete: HTTPMethod = (url, options = {}) =>
-        this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
-
-    async request(url: string, options: Options = {}, timeout = 5000): Promise<unknown> {
-        const {retries = 1} = options;
-
-        const error = (err: Error) => {
-            const count = retries - 1;
-            if (!count) {
-                throw err;
-            }
-            return this.request(url, {
-                ...options,
-                retries: count
-            });
-        };
-
-        try {
-            return await this.mainRequest(url, options, timeout);
-        } catch (err) {
-            return error(err);
-        }
+    constructor(endpoint: string) {
+        this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
-    // request(url: string, options: Options = {}, timeout = 5000): Promise<unknown> {
-    //     const {retries = 1} = options;
 
-    //     const error = (err: Error) => {
-    //         const count = retries - 1;
-    //         if (!count) {
-    //             throw err;
-    //         }
-    //         return this.request(url, {
-    //             ...options,
-    //             retries: count
-    //         });
-    //     };
+    public get<Response>(url: string, data?: unknown): Promise<Response> {
+        const newUrl = data ? `?${url}${queryStringify(data)}` : url;
+        return this.request(this.endpoint + newUrl);
+    }
 
-    //     return this.mainRequest(url, options, timeout).catch(error);
-    // }
+    public post<Response = void>(url: string, data?: unknown): Promise<Response> {
+        return this.request<Response>(this.endpoint + url, {
+            method: METHODS.POST,
+            data
+        });
+    }
 
-    mainRequest = (url: string, options: Options = {}, timeout = 5000) => {
-        const {headers = {}, method, data} = options;
+    public put<Response = void>(url: string, data: unknown, contentType?: string): Promise<Response> {
+        return this.request(this.endpoint + url, {
+            method: METHODS.PUT,
+            contentType,
+            data
+        });
+    }
 
-        return new Promise(function (resolve, reject) {
+    public delete<Response>(url: string, data: unknown): Promise<Response> {
+        return this.request(this.endpoint + url, {
+            method: METHODS.DELETE,
+            data
+        });
+    }
+
+    private request<Response>(url: string, options: Options = {method: METHODS.GET}): Promise<Response> {
+        const {method, data, contentType} = options;
+        return new Promise((resolve, reject) => {
             if (!method) {
-                reject("No method");
+                reject(new Error("No method"));
                 return;
             }
 
             const xhr = new XMLHttpRequest();
-            const isGet = method === METHODS.GET;
+            xhr.open(method, url);
 
-            xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
-
-            Object.keys(headers).forEach(key => {
-                xhr.setRequestHeader(key, headers[key]);
-            });
-
-            xhr.onload = function () {
-                resolve(xhr);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status < 400) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(xhr.response);
+                    }
+                }
             };
 
-            xhr.onabort = reject;
-            xhr.onerror = reject;
+            xhr.onabort = () => reject({reason: "abort"});
+            xhr.onerror = () => reject({reason: "network error"});
+            xhr.ontimeout = () => reject({reason: "timeout"});
 
-            xhr.timeout = timeout;
-            xhr.ontimeout = reject;
+            xhr.withCredentials = true;
+            xhr.responseType = "json";
+            if (contentType === "FormData") {
+                xhr.send(data);
+                return;
+            } else {
+                xhr.setRequestHeader("Content-Type", "application/json");
+            }
 
-            if (isGet || !data) {
+            if (method === METHODS.GET || !data) {
                 xhr.send();
             } else {
-                // должен быть "Document | XMLHttpRequestBodyInit | null | undefined"
-                xhr.send(data);
+                xhr.send(JSON.stringify(data));
             }
         });
-    };
+    }
 }
-
-export default HTTPTransport;

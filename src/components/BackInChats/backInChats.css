@@ -17,10 +17,15 @@
     background-color: var(--blue-color);
     position: relative;
     cursor: pointer;
+    border: none;
 }
 
-.arrow > svg {
+.arrow:hover {
+    background-color: var(--dark-blue-color);
+}
+
+.arrow > img {
     position: absolute;
     top: 8px;
-    left: 8px;
+    left: 9px;
 }

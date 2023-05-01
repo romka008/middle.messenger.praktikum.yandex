@@ -13,13 +13,16 @@
     background-color: var(--background-color-chats);
 }
 
-.link-profile {
+.chat-page-chats__header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.link-profile > a {
+.link-profile {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    letter-spacing: 0.3px;
     align-self: flex-end;
     font-style: normal;
     font-weight: 500;
@@ -27,11 +30,23 @@
     line-height: 12px;
     color: var(--text-gray-color);
     margin: 21px 10px 23px;
+    border-radius: 3px;
+    border: none;
+    background-color: inherit;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.link-profile:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .search-block {
     display: flex;
     position: relative;
+    flex-grow: 1;
     padding: 0 10px 14px;
 }
 
@@ -42,24 +57,12 @@
     border: none;
 }
 
-.chat-page-chats__block {
-    height: calc(100vh - 109px);
-    overflow: auto;
-    overflow-x: visible;
-}
-
-.chat {
-    height: 67px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2px;
-}
-
 .active {
     background-color: #e4edfd;
 }
 
 .chat-page-messages-top {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,19 +89,22 @@
     flex-grow: 1;
 }
 
-.chat-page-messages-top__right-side {
+.chat-page__params-chat {
     height: 25px;
     width: 25px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.chat-page-messages-top__right-side:hover {
-    background-color: #f5f5f5;
+.chat-page__params-chat:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .chat-page-messages-bottom {
@@ -141,6 +147,111 @@
     cursor: pointer;
 }
 
-.icon-attachment:hover {
+.icon-attachment {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    background-color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon-attachment:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.chat-page-wrapper-search-block {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.chat-page__add-chat {
+    height: 34px;
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    border-radius: 50%;
+    background-color: inherit;
+    color: var(--blue-color);
+    border: none;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-page__add-chat:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.add-chat__menu {
+    left: 270px;
+    top: 40px;
+    display: block;
+    display: none;
+    font-weight: 500;
+    font-size: 12px;
+    white-space: nowrap;
+    line-height: 14px;
+    color: var(--text-color);
+    background-color: #fff;
+    box-shadow: 0 0 6px #99999947;
+    border-radius: 12px;
+    z-index: 10;
+    position: absolute;
+    padding: 15px 0;
+}
+
+.item-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    background-color: #fff;
+    border: none;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+.item-menu:hover {
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.wrapper__dark__background {
+    background-color: #000;
+    opacity: 0.4;
+}
+
+.params-chat__menu {
+    position: absolute;
+    white-space: nowrap;
+    color: var(--text-color);
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    display: none;
+    right: 15px;
+    top: 45px;
+    box-shadow: 0 0 6px #99999947;
+}
+
+.menu-visible {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

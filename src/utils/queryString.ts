@@ -1,4 +1,4 @@
-export function queryStringify(data) {
+export function queryString(data) {
     if (typeof data !== "object") {
         throw new Error("Data must be object");
     }
