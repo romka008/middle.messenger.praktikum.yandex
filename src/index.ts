@@ -1,5 +1,5 @@
 import {Login} from "./pages/Login";
-import {SignUp} from "./pages/Signup";
+import {SignUp} from "./pages/Signup/Signup";
 import {PageNotFound} from "./pages/PageNotFound";
 import {ErrorServer} from "./pages/ErrorServer";
 import {Profile} from "./pages/Profile";
@@ -31,7 +31,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         .use(Routes.ErrorServer, ErrorServer);
 
     let isProtectedRoute = true;
-
     switch (window.location.pathname) {
         // case Routes.Home:
         case Routes.Login:
@@ -42,7 +41,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     try {
         await authController.fetchUser();
-
         Router.start();
 
         if (!isProtectedRoute) {
@@ -50,7 +48,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
     } catch (e) {
         Router.start();
-
         if (isProtectedRoute) {
             Router.go(Routes.Login);
         }

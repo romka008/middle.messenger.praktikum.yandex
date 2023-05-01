@@ -1,7 +1,7 @@
 import Block from "../../../../modules/Block";
 import template from "./chat.hbs";
 import {connect} from "../../../../hoc/connect";
-import {ImageAvatar} from "../../../../components/Avatar/ImageAvatar";
+import {ImageAvatar} from "../../../../components/Avatar/ImageAvatar/ImageAvatar";
 
 import "./chat.css";
 

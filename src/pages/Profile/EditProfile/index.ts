@@ -2,7 +2,7 @@ import Block from "../../../modules/Block";
 import template from "./editProfile.hbs";
 import {Avatar} from "../../../components/Avatar";
 import {Input} from "../../../components/Input";
-import {Field} from "../../../components/ProfileField/Field";
+import {Field} from "../../../components/ProfileField/Field/Field";
 import {ProfileField} from "../../../components/ProfileField";
 import {BackInChats} from "../../../components/BackInChats";
 import {Button} from "../../../components/Button3";

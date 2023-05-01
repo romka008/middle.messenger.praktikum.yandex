@@ -20,7 +20,7 @@ import {IInfoChat, IMessage, IUserInActiveChat} from "../../../modules/Store";
 import ChatsController from "../../../connrollers/ChatsController";
 import MessageController from "../../../connrollers/MessageController";
 import {UsersInActiveChat} from "../../../components/UsersInActiveChat";
-import {ImageAvatar} from "../../../components/Avatar/ImageAvatar";
+import {ImageAvatar} from "../../../components/Avatar/ImageAvatar/ImageAvatar";
 
 import "./mainBlockChat.css";
 
@@ -175,7 +175,7 @@ class MainBlockChatBase extends Block<MainBlockChatProps> {
     protected componentDidUpdate(_oldProps: MainBlockChatProps, newProps: MainBlockChatProps): boolean {
         this.children.messages = this.createMessages(newProps);
         this.children.usersInActiveChat = this.createUsersInActiveChat(newProps);
-        this.children.imageAvatar = this.createImageAvatar(newProps);
+        this.children.avatar = this.createImageAvatar(newProps);
 
         return true;
     }
@@ -207,7 +207,7 @@ class MainBlockChatBase extends Block<MainBlockChatProps> {
             messages: (activeChatID ? props.messages : []).map(data => {
                 return new Message({
                     ...data,
-                    message: data.content,
+                    textMessage: data.content,
                     statusMessage: data.is_read ? readIcon : doNotReadIcon,
                     time: getTime(data.time),
                     partner: props.userId !== data.user_id

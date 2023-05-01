@@ -6,7 +6,7 @@ import "./message.css";
 interface IMessageProps {
     time: string;
     partner?: boolean;
-    message?: string;
+    textMessage?: string;
     image?: string;
     statusMessage?: string;
 }
