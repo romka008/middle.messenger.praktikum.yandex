@@ -1,5 +1,5 @@
 import Block from "../../../modules/Block";
-import template from "./MainBlockChat.hbs";
+import template from "./mainBlockChat.hbs";
 import attachmentIcon from "../../../assets/icons/attachmentIcon.svg";
 import paramsIcon from "../../../assets/icons/paramsIcon.svg";
 import addUserIcon from "../../../assets/icons/addUserIcon.svg";
@@ -22,7 +22,7 @@ import MessageController from "../../../connrollers/MessageController";
 import {UsersInActiveChat} from "../../../components/UsersInActiveChat";
 import {ImageAvatar} from "../../../components/Avatar/ImageAvatar/ImageAvatar";
 
-import "./MainBlockChat.css";
+import "./mainBlockChat.css";
 
 interface MainBlockChatProps {
     chats: IInfoChat[] | [];
