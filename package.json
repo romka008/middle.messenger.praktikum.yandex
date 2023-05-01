@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run build",
+    "start": "npm run build && node ./server.js",
     "dev": "webpack serve --mode development --env development",
     "eslint": "eslint src",
     "eslint:fix": "eslint --fix src",
     "stylelint": "stylelint \"**/*.css\"",
-    "build": "webpack serve --mode production --env production",
+    "build": "webpack --mode production --env production",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
   "keywords": [],
