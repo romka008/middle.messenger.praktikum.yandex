@@ -9,10 +9,9 @@
     "eslint:fix": "eslint --fix src",
     "stylelint": "stylelint \"**/*.css\"",
     "stylelint:fix": "stylelint \"**/*.css\" --fix",
-    "lint:all": "npm run eslint:fix && npm run stylelint:fix",
+    "lint:all": "npm run eslint && npm run stylelint",
     "build": "webpack --mode production --env production",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
-    "prepare": "husky install"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
   "husky": {
     "hooks": {
