@@ -1,8 +1,8 @@
 const {JSDOM} = require("jsdom");
-const Handelbars = require("handlebars");
+const Handlebars = require("handlebars");
 const fs = require("fs");
 
-const {window} = new JSDOM('<div id="app"></div>', {
+const {window} = new JSDOM('<div id="root"></div>', {
     url: "http://localhost:3000"
 });
 
@@ -13,7 +13,7 @@ global.DocumentFragment = window.DocumentFragment;
 require.extensions[".hbs"] = function (module, filename) {
     const contents = fs.readFileSync(filename, "utf-8");
 
-    module.exports = Handelbars.compile(contents);
+    module.exports = Handlebars.compile(contents);
 };
 require.extensions[".pcss"] = function () {
     module.exports = () => {};

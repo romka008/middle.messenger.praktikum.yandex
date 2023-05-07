@@ -1,15 +1,18 @@
 {
+    "ts-node": {
+        "files": true
+    },
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "dist",
         "target": "ES2018",
         "declaration": false,
-        "module": "ES2020",
+        "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
         "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "strictNullChecks": true
     }
 }
