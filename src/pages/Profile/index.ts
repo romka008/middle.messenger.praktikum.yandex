@@ -1,7 +1,6 @@
 import Block from "../../modules/Block";
 import template from "./profile.hbs";
 import {Avatar} from "../../components/Avatar";
-import {Link} from "../../components/Link";
 import {BackInChats} from "../../components/BackInChats";
 import {ProfileField} from "../../components/ProfileField";
 import {Field} from "../../components/ProfileField/Field/Field";
@@ -90,12 +89,6 @@ class ProfileBase extends Block {
                     router.go("/settings/edit-password");
                 }
             }
-        });
-
-        this.children.linkLogout = new Link({
-            route: "./",
-            value: "Выход",
-            className: "logout"
         });
 
         this.children.logoutButton = new Button({

@@ -63,9 +63,9 @@ export function merge(lhs: Indexed, rhs: Indexed): Indexed {
     return lhs;
 }
 
-export function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
+export function set(object: Indexed | unknown, path: string | unknown, value: unknown): Indexed | unknown {
     if (typeof path !== "string") {
-        return new Error("path must be string");
+        throw new Error("path must be string");
     }
 
     if (typeof object !== "object" || object === null) {
