@@ -10,10 +10,10 @@ import ChatsController from "../../connrollers/ChatsController";
 import {ModalCreateChat} from "./modals/ModalCreateChat";
 import {openModal} from "../../utils/helpers";
 import {ModalAddUser} from "./modals/ModalAddUser";
-import {MainBlockChat} from "./MainBlockChat";
+import {MainBlockChat} from "./MainBlockChat/MainBlockChat";
 import {ModalDeleteUser} from "./modals/ModalDeleteUser";
 import {ModalUpdateAvatarChat} from "./modals/ModalUpdateAvatarChat";
-import {ImageAvatar} from "../../components/Avatar/ImageAvatar";
+import {ImageAvatar} from "../../components/Avatar/ImageAvatar/ImageAvatar";
 
 import "./chats.css";
 

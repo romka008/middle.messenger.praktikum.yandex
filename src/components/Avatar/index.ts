@@ -2,7 +2,7 @@ import Block from "../../modules/Block";
 import template from "./avatar.hbs";
 import {Button} from "../Button3";
 import UserController from "../../connrollers/UserController";
-import {ImageAvatar} from "./ImageAvatar";
+import {ImageAvatar} from "./ImageAvatar/ImageAvatar";
 import {connect} from "../../hoc/connect";
 
 import "./avatar.css";

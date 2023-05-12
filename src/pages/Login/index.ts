@@ -49,15 +49,15 @@ export class Login extends Block {
         //     })
         // });
 
-        this.children.login = new LabeledInput({
+        this.children.loginField = new LabeledInput({
             name: "login",
             type: "text",
             span: "Логин",
             blur: e => {
-                blur(this.children.login as Block, e);
+                blur(this.children.loginField as Block, e);
             },
             focus: e => {
-                focus(this.children.login as Block, e);
+                focus(this.children.loginField as Block, e);
             }
         });
 

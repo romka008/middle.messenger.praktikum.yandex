@@ -1,7 +1,7 @@
 import Block from "./Block";
 
 // eslint-disable-next-line
-interface IBlockConstructor<P extends Record<string, any> = any> {
+export interface IBlockConstructor<P extends Record<string, any> = any> {
     new (props: P): Block<P>;
 }
 
@@ -18,8 +18,6 @@ function render(rootSelector: string, component: Block) {
 
     root.innerHTML = "";
     root.appendChild(component.getContent()!);
-
-    component.dispatchComponentDidMount();
 
     return root;
 }

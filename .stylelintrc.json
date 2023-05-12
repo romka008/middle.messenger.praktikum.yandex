@@ -4,7 +4,11 @@
         "import-notation": "string",
         "custom-property-empty-line-before": null,
         "no-empty-source": null,
-        "selector-class-pattern": null
+        "selector-class-pattern": null,
+        "function-url-quotes": null,
+        "no-descending-specificity": null,
+        "at-rule-empty-line-before": null,
+        "selector-pseudo-element-colon-notation": null
     },
     "ignoreFiles": [
         "dist/*"
